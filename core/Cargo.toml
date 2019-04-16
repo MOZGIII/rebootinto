@@ -1,0 +1,17 @@
+[package]
+name = "rebootinto-core"
+version = "0.1.0"
+authors = ["MOZGIII <mike-n@narod.ru>"]
+edition = "2018"
+
+[dependencies]
+failure = "0.1"
+failure_derive = "0.1"
+
+[dependencies.efibootnext]
+git = "https://github.com/MOZGIII/efibootnext.git"
+rev = "f934a00e6b2d918a96640bc847a6c00974754ffa"
+
+[dependencies.efivar]
+git = "https://github.com/MOZGIII/efiboot-rs.git"
+rev = "551798e5486597879ffa7aff0e42712cf66c0012"
