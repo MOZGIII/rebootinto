@@ -8,7 +8,7 @@ pub fn reboot() -> Result<(), Error> {
 
 #[cfg(target_os = "windows")]
 fn prepare_command() -> Command {
-    let command = Command::new("shutdown");
+    let mut command = Command::new("shutdown");
     command.arg("/r");
     command.arg("/f");
     command

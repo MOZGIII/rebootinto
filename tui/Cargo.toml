@@ -5,11 +5,27 @@ authors = ["MOZGIII <mike-n@narod.ru>"]
 edition = "2018"
 
 [dependencies]
-tui = "0.5"
-termion = "1.5"
-rand = "0.6"
 failure = "0.1"
 failure_derive = "0.1"
 
 [dependencies.rebootinto-core]
 path = "../core"
+
+[dependencies.tui]
+git = "https://github.com/TimonPost/tui-rs.git"
+rev = "9a6676462ad5356f66a58d13cfe9cf57c6479cd1"
+default-features = false
+optional = true
+
+[dependencies.termion]
+version = "1.5"
+optional = true
+
+[dependencies.crossterm]
+version = "0.9"
+optional = true
+
+[features]
+crossterm_backend = ["crossterm", "tui", "tui/crossterm"]
+termion_backend = ["termion", "tui", "tui/termion"]
+default = ["termion_backend"]

@@ -4,16 +4,13 @@ extern crate failure_derive;
 use failure::Error;
 use rebootinto_core as core;
 
-use std::io;
-
-use termion::input::{MouseTerminal, TermRead};
-use termion::raw::IntoRawMode;
-use termion::screen::AlternateScreen;
-use tui::backend::TermionBackend;
 use tui::Terminal;
 
 mod error;
+mod event;
+mod input_backend;
 mod item;
+mod terminal_backend;
 mod ui;
 
 use error::NoLoadOptions;
@@ -45,17 +42,14 @@ fn run() -> Result<()> {
     }
 
     let reboot_into = {
-        let stdout = io::stdout().into_raw_mode()?;
-        let stdout = MouseTerminal::from(stdout);
-        let stdout = AlternateScreen::from(stdout);
-        let backend = TermionBackend::new(stdout);
+        let backend = terminal_backend::create_terminal_backend()?;
         let mut terminal = Terminal::new(backend)?;
         terminal.hide_cursor()?;
 
-        let mut events = io::stdin().events();
+        let mut input = input_backend::create_input_backend();
 
         let mut items: Vec<Item> = load_options.into_iter().map(|e| Item::from(e)).collect();
-        let mut ui = BootNextSelectorUI::new(&mut terminal, &mut events, &items, 0);
+        let mut ui = BootNextSelectorUI::new(&mut terminal, &mut input, &items, 0);
 
         let selected_item_idx = ui.run()?;
         selected_item_idx.map(|e| items.swap_remove(e).into_inner())
