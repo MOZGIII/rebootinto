@@ -28,4 +28,5 @@ optional = true
 [features]
 crossterm_backend = ["crossterm", "tui", "tui/crossterm"]
 termion_backend = ["termion", "tui", "tui/termion"]
-default = ["termion_backend"]
+# default = ["termion_backend"]
+default = ["crossterm_backend"]
