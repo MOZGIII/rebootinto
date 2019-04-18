@@ -43,6 +43,7 @@ impl<'a, B: tui::backend::Backend> BootNextSelectorUI<'a, B> {
                     .items(&items)
                     .select(Some(current_item))
                     .highlight_style(style.modifier(Modifier::BOLD))
+                    .highlight_symbol("-")
                     .render(&mut f, rect);
             })?;
 
