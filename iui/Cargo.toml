@@ -1,0 +1,12 @@
+[package]
+name = "rebootinto-iui"
+version = "0.1.0"
+authors = ["MOZGIII <mike-n@narod.ru>"]
+edition = "2018"
+
+[dependencies]
+failure = "0.1"
+iui = "0.3"
+
+[dependencies.rebootinto-core]
+path = "../core"
