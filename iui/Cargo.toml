@@ -10,3 +10,6 @@ iui = "0.3"
 
 [dependencies.rebootinto-core]
 path = "../core"
+
+[build-dependencies]
+embed-resource = "1.2.0"

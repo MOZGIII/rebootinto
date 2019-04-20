@@ -30,3 +30,6 @@ crossterm_backend = ["crossterm", "tui", "tui/crossterm"]
 crossterm_backend_sync_input = ["crossterm_backend"]
 termion_backend = ["termion", "tui", "tui/termion"]
 default = ["crossterm_backend"]
+
+[build-dependencies]
+embed-resource = "1.2.0"
