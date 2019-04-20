@@ -10,7 +10,7 @@ failure_derive = "0.1"
 
 [dependencies.efibootnext]
 git = "https://github.com/MOZGIII/efibootnext.git"
-rev = "f934a00e6b2d918a96640bc847a6c00974754ffa"
+rev = "380b99ea4ab5b405c5c2bcae9c3b2262375eb605"
 
 [dependencies.efivar]
 git = "https://github.com/MOZGIII/efiboot-rs.git"
