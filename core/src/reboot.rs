@@ -11,6 +11,8 @@ fn prepare_command() -> Command {
     let mut command = Command::new("shutdown");
     command.arg("/r");
     command.arg("/f");
+    command.arg("/t");
+    command.arg("0");
     command
 }
 
