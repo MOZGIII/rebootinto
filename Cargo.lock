@@ -156,7 +156,7 @@ dependencies = [
 [[package]]
 name = "efibootnext"
 version = "0.1.0"
-source = "git+https://github.com/MOZGIII/efibootnext.git?rev=f934a00e6b2d918a96640bc847a6c00974754ffa#f934a00e6b2d918a96640bc847a6c00974754ffa"
+source = "git+https://github.com/MOZGIII/efibootnext.git?rev=380b99ea4ab5b405c5c2bcae9c3b2262375eb605#380b99ea4ab5b405c5c2bcae9c3b2262375eb605"
 dependencies = [
  "byteorder 1.3.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "efi-loadopt 0.1.0 (git+https://github.com/MOZGIII/efi-loadopt.git?rev=ca166c2b34c6a45f1e75738f15af95b2f12a6070)",
@@ -246,7 +246,7 @@ dependencies = [
 name = "rebootinto-core"
 version = "0.1.0"
 dependencies = [
- "efibootnext 0.1.0 (git+https://github.com/MOZGIII/efibootnext.git?rev=f934a00e6b2d918a96640bc847a6c00974754ffa)",
+ "efibootnext 0.1.0 (git+https://github.com/MOZGIII/efibootnext.git?rev=380b99ea4ab5b405c5c2bcae9c3b2262375eb605)",
  "efivar 0.1.0 (git+https://github.com/MOZGIII/efiboot-rs.git?rev=551798e5486597879ffa7aff0e42712cf66c0012)",
  "failure 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)",
  "failure_derive 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -405,7 +405,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 "checksum crossterm_utils 0.2.1 (registry+https://github.com/rust-lang/crates.io-index)" = "c3b65f38e665bb045b3abe2ee6c0c902e14eb889c08c8dbdf0adab5993c802f6"
 "checksum crossterm_winapi 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)" = "71dc52848cd3c5e06d5d0e193c0d64ce93b71502e124723a33bf615ef7089610"
 "checksum efi-loadopt 0.1.0 (git+https://github.com/MOZGIII/efi-loadopt.git?rev=ca166c2b34c6a45f1e75738f15af95b2f12a6070)" = "<none>"
-"checksum efibootnext 0.1.0 (git+https://github.com/MOZGIII/efibootnext.git?rev=f934a00e6b2d918a96640bc847a6c00974754ffa)" = "<none>"
+"checksum efibootnext 0.1.0 (git+https://github.com/MOZGIII/efibootnext.git?rev=380b99ea4ab5b405c5c2bcae9c3b2262375eb605)" = "<none>"
 "checksum efivar 0.1.0 (git+https://github.com/MOZGIII/efiboot-rs.git?rev=551798e5486597879ffa7aff0e42712cf66c0012)" = "<none>"
 "checksum either 1.5.2 (registry+https://github.com/rust-lang/crates.io-index)" = "5527cfe0d098f36e3f8839852688e63c8fff1c90b2b405aef730615f9a7bcf7b"
 "checksum failure 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)" = "795bd83d3abeb9220f257e597aa0080a508b27533824adf336529648f6abf7e2"
