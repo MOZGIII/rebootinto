@@ -7,6 +7,7 @@ edition = "2018"
 [dependencies]
 failure = "0.1"
 failure_derive = "0.1"
+simplereboot = "0.1"
 
 [dependencies.efibootnext]
 git = "https://github.com/MOZGIII/efibootnext.git"

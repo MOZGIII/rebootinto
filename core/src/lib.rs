@@ -8,7 +8,6 @@ pub use efibootnext::LoadOption;
 pub use failure::Error;
 
 mod error;
-mod reboot;
 
 pub type Result<T> = std::result::Result<T, Error>;
 
@@ -30,7 +29,9 @@ impl Backend {
     pub fn reboot_into(&mut self, num: u16) -> Result<()> {
         efibootnext::set_boot_next(self.var_manager.as_mut(), num)
             .map_err(error::RebootIntoErrorKind::SetBootNextError)?;
-        reboot::reboot().map_err(error::RebootIntoErrorKind::RebootError)?;
+        simplereboot::reboot()
+            .map_err(|e| Error::from(e))
+            .map_err(error::RebootIntoErrorKind::RebootError)?;
         Ok(())
     }
 }
