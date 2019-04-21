@@ -28,14 +28,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "base64"
-version = "0.10.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-dependencies = [
- "byteorder 1.3.1 (registry+https://github.com/rust-lang/crates.io-index)",
-]
-
-[[package]]
 name = "bitflags"
 version = "1.0.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -155,7 +147,7 @@ dependencies = [
 [[package]]
 name = "efi-loadopt"
 version = "0.1.0"
-source = "git+https://github.com/MOZGIII/efi-loadopt.git?rev=ca166c2b34c6a45f1e75738f15af95b2f12a6070#ca166c2b34c6a45f1e75738f15af95b2f12a6070"
+source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "byteorder 1.3.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "failure 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -164,11 +156,11 @@ dependencies = [
 [[package]]
 name = "efibootnext"
 version = "0.1.0"
-source = "git+https://github.com/MOZGIII/efibootnext.git?rev=380b99ea4ab5b405c5c2bcae9c3b2262375eb605#380b99ea4ab5b405c5c2bcae9c3b2262375eb605"
+source = "git+https://github.com/MOZGIII/efibootnext.git?rev=3c8ae1a3b6bebd2e681d0f34e1742b9d0ea15e8c#3c8ae1a3b6bebd2e681d0f34e1742b9d0ea15e8c"
 dependencies = [
  "byteorder 1.3.1 (registry+https://github.com/rust-lang/crates.io-index)",
- "efi-loadopt 0.1.0 (git+https://github.com/MOZGIII/efi-loadopt.git?rev=ca166c2b34c6a45f1e75738f15af95b2f12a6070)",
- "efivar 0.1.0 (git+https://github.com/MOZGIII/efiboot-rs.git?rev=551798e5486597879ffa7aff0e42712cf66c0012)",
+ "efi-loadopt 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "efivar 0.1.0 (git+https://github.com/MOZGIII/efiboot-rs.git?rev=9ab65ba399ad18770fbd755d5ec6f24a72d358a4)",
  "failure 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)",
  "failure_derive 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
@@ -176,15 +168,11 @@ dependencies = [
 [[package]]
 name = "efivar"
 version = "0.1.0"
-source = "git+https://github.com/MOZGIII/efiboot-rs.git?rev=551798e5486597879ffa7aff0e42712cf66c0012#551798e5486597879ffa7aff0e42712cf66c0012"
+source = "git+https://github.com/MOZGIII/efiboot-rs.git?rev=9ab65ba399ad18770fbd755d5ec6f24a72d358a4#9ab65ba399ad18770fbd755d5ec6f24a72d358a4"
 dependencies = [
- "base64 0.10.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "bitflags 1.0.4 (registry+https://github.com/rust-lang/crates.io-index)",
  "byteorder 1.3.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "failure 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)",
- "serde 1.0.90 (registry+https://github.com/rust-lang/crates.io-index)",
- "serde_derive 1.0.90 (registry+https://github.com/rust-lang/crates.io-index)",
- "toml 0.5.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "winapi 0.3.7 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
@@ -274,8 +262,8 @@ dependencies = [
 name = "rebootinto-core"
 version = "0.1.0"
 dependencies = [
- "efibootnext 0.1.0 (git+https://github.com/MOZGIII/efibootnext.git?rev=380b99ea4ab5b405c5c2bcae9c3b2262375eb605)",
- "efivar 0.1.0 (git+https://github.com/MOZGIII/efiboot-rs.git?rev=551798e5486597879ffa7aff0e42712cf66c0012)",
+ "efibootnext 0.1.0 (git+https://github.com/MOZGIII/efibootnext.git?rev=3c8ae1a3b6bebd2e681d0f34e1742b9d0ea15e8c)",
+ "efivar 0.1.0 (git+https://github.com/MOZGIII/efiboot-rs.git?rev=9ab65ba399ad18770fbd755d5ec6f24a72d358a4)",
  "failure 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)",
  "failure_derive 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
@@ -322,21 +310,6 @@ version = "0.1.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
-name = "serde"
-version = "1.0.90"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-
-[[package]]
-name = "serde_derive"
-version = "1.0.90"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-dependencies = [
- "proc-macro2 0.4.27 (registry+https://github.com/rust-lang/crates.io-index)",
- "quote 0.6.12 (registry+https://github.com/rust-lang/crates.io-index)",
- "syn 0.15.32 (registry+https://github.com/rust-lang/crates.io-index)",
-]
-
-[[package]]
 name = "syn"
 version = "0.15.32"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -365,14 +338,6 @@ dependencies = [
  "libc 0.2.51 (registry+https://github.com/rust-lang/crates.io-index)",
  "redox_syscall 0.1.54 (registry+https://github.com/rust-lang/crates.io-index)",
  "redox_termios 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
-]
-
-[[package]]
-name = "toml"
-version = "0.5.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-dependencies = [
- "serde 1.0.90 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
@@ -464,7 +429,6 @@ dependencies = [
 "checksum autocfg 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)" = "a6d640bee2da49f60a4068a7fae53acde8982514ab7bae8b8cea9e88cbcfd799"
 "checksum backtrace 0.3.15 (registry+https://github.com/rust-lang/crates.io-index)" = "f106c02a3604afcdc0df5d36cc47b44b55917dbaf3d808f71c163a0ddba64637"
 "checksum backtrace-sys 0.1.28 (registry+https://github.com/rust-lang/crates.io-index)" = "797c830ac25ccc92a7f8a7b9862bde440715531514594a6154e3d4a54dd769b6"
-"checksum base64 0.10.1 (registry+https://github.com/rust-lang/crates.io-index)" = "0b25d992356d2eb0ed82172f5248873db5560c4721f564b13cb5193bda5e668e"
 "checksum bitflags 1.0.4 (registry+https://github.com/rust-lang/crates.io-index)" = "228047a76f468627ca71776ecdebd732a3423081fcf5125585bcd7c49886ce12"
 "checksum byteorder 1.3.1 (registry+https://github.com/rust-lang/crates.io-index)" = "a019b10a2a7cdeb292db131fc8113e57ea2a908f6e7894b0c3c671893b65dbeb"
 "checksum cassowary 0.3.0 (registry+https://github.com/rust-lang/crates.io-index)" = "df8670b8c7b9dae1793364eafadf7239c40d669904660c5960d74cfd80b46a53"
@@ -479,9 +443,9 @@ dependencies = [
 "checksum crossterm_terminal 0.2.2 (registry+https://github.com/rust-lang/crates.io-index)" = "00c9e7fd9c19394c0da7f4279f7017035defe5396f91ca1b0e8b03a0299ebb60"
 "checksum crossterm_utils 0.2.1 (registry+https://github.com/rust-lang/crates.io-index)" = "c3b65f38e665bb045b3abe2ee6c0c902e14eb889c08c8dbdf0adab5993c802f6"
 "checksum crossterm_winapi 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)" = "71dc52848cd3c5e06d5d0e193c0d64ce93b71502e124723a33bf615ef7089610"
-"checksum efi-loadopt 0.1.0 (git+https://github.com/MOZGIII/efi-loadopt.git?rev=ca166c2b34c6a45f1e75738f15af95b2f12a6070)" = "<none>"
-"checksum efibootnext 0.1.0 (git+https://github.com/MOZGIII/efibootnext.git?rev=380b99ea4ab5b405c5c2bcae9c3b2262375eb605)" = "<none>"
-"checksum efivar 0.1.0 (git+https://github.com/MOZGIII/efiboot-rs.git?rev=551798e5486597879ffa7aff0e42712cf66c0012)" = "<none>"
+"checksum efi-loadopt 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "a2462a54e80a3aab33753ecf179b6b37d6f00e9eb1ab0d202bac889f78c0e276"
+"checksum efibootnext 0.1.0 (git+https://github.com/MOZGIII/efibootnext.git?rev=3c8ae1a3b6bebd2e681d0f34e1742b9d0ea15e8c)" = "<none>"
+"checksum efivar 0.1.0 (git+https://github.com/MOZGIII/efiboot-rs.git?rev=9ab65ba399ad18770fbd755d5ec6f24a72d358a4)" = "<none>"
 "checksum either 1.5.2 (registry+https://github.com/rust-lang/crates.io-index)" = "5527cfe0d098f36e3f8839852688e63c8fff1c90b2b405aef730615f9a7bcf7b"
 "checksum embed-resource 1.2.0 (registry+https://github.com/rust-lang/crates.io-index)" = "ee11dd277e159f3a7845341f8c800899cf918a366956e31dd52f35eff638a403"
 "checksum failure 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)" = "795bd83d3abeb9220f257e597aa0080a508b27533824adf336529648f6abf7e2"
@@ -495,12 +459,9 @@ dependencies = [
 "checksum redox_syscall 0.1.54 (registry+https://github.com/rust-lang/crates.io-index)" = "12229c14a0f65c4f1cb046a3b52047cdd9da1f4b30f8a39c5063c8bae515e252"
 "checksum redox_termios 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)" = "7e891cfe48e9100a70a3b6eb652fef28920c117d366339687bd5576160db0f76"
 "checksum rustc-demangle 0.1.14 (registry+https://github.com/rust-lang/crates.io-index)" = "ccc78bfd5acd7bf3e89cffcf899e5cb1a52d6fafa8dec2739ad70c9577a57288"
-"checksum serde 1.0.90 (registry+https://github.com/rust-lang/crates.io-index)" = "aa5f7c20820475babd2c077c3ab5f8c77a31c15e16ea38687b4c02d3e48680f4"
-"checksum serde_derive 1.0.90 (registry+https://github.com/rust-lang/crates.io-index)" = "58fc82bec244f168b23d1963b45c8bf5726e9a15a9d146a067f9081aeed2de79"
 "checksum syn 0.15.32 (registry+https://github.com/rust-lang/crates.io-index)" = "846620ec526c1599c070eff393bfeeeb88a93afa2513fc3b49f1fea84cf7b0ed"
 "checksum synstructure 0.10.1 (registry+https://github.com/rust-lang/crates.io-index)" = "73687139bf99285483c96ac0add482c3776528beac1d97d444f6e91f203a2015"
 "checksum termion 1.5.1 (registry+https://github.com/rust-lang/crates.io-index)" = "689a3bdfaab439fd92bc87df5c4c78417d3cbe537487274e9b0b2dce76e92096"
-"checksum toml 0.5.0 (registry+https://github.com/rust-lang/crates.io-index)" = "87c5890a989fa47ecdc7bcb4c63a77a82c18f306714104b1decfd722db17b39e"
 "checksum tui 0.5.1 (git+https://github.com/TimonPost/tui-rs.git?rev=2c8548ca92ec95db98d4229b4202513113983514)" = "<none>"
 "checksum ui-sys 0.1.3 (registry+https://github.com/rust-lang/crates.io-index)" = "7ef1f42346ee906ff988cf69b21847893598f841d632ca708b7831ad9b37c7f5"
 "checksum unicode-segmentation 1.2.1 (registry+https://github.com/rust-lang/crates.io-index)" = "aa6024fc12ddfd1c6dbc14a80fa2324d4568849869b779f6bd37e5e4c03344d1"

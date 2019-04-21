@@ -4,7 +4,7 @@ extern crate failure_derive;
 use efibootnext;
 use efivar;
 
-pub use efibootnext::{LoadOption, LoadOptionIter};
+pub use efibootnext::LoadOption;
 pub use failure::Error;
 
 mod error;
@@ -23,7 +23,7 @@ impl Backend {
         })
     }
 
-    pub fn load_options(&mut self) -> LoadOptionIter {
+    pub fn load_options<'a>(&'a mut self) -> impl Iterator<Item = Result<LoadOption>> + 'a {
         efibootnext::load_options(self.var_manager.as_mut())
     }
 
