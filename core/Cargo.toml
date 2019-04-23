@@ -11,7 +11,7 @@ simplereboot = "0.1"
 
 [dependencies.efibootnext]
 git = "https://github.com/MOZGIII/efibootnext.git"
-rev = "3c8ae1a3b6bebd2e681d0f34e1742b9d0ea15e8c"
+rev = "3410b105715d970adf5b1e47b75420f0282beaba"
 
 [dependencies.efivar]
 git = "https://github.com/MOZGIII/efiboot-rs.git"
