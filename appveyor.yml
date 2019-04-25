@@ -24,7 +24,7 @@ install:
 
 build_script:
   - cargo build --release
-  - cargo wix --name rebootinto --install-version "%APPVEYOR_BUILD_VERSION%"
+  - cargo wix --nocapture --name rebootinto --install-version "%APPVEYOR_BUILD_VERSION%"
 
 test_script:
   - cargo test --release
