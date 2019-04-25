@@ -18,11 +18,14 @@ install:
   - curl -sSf -o rustup-init.exe https://win.rustup.rs
   - rustup-init.exe --default-host %TARGET% --default-toolchain %CHANNEL% -y
   - set PATH=%PATH%;C:\Users\appveyor\.cargo\bin
+  - cargo install cargo-wix
   - rustc -Vv
   - cargo -V
+  - cargo wix --version
 
 build_script:
   - cargo build --release
+  - cargo wix --name rebootinto --install-version "%APPVEYOR_BUILD_VERSION%"
 
 test_script:
   - cargo test --release
@@ -30,3 +33,5 @@ test_script:
 artifacts:
   - path: target/release/rebootinto-tui.exe
   - path: target/release/rebootinto-iui.exe
+  - path: target/wix/rebootinto-$(APPVEYOR_BUILD_VERSION)-x86_64.msi
+    name: rebootinto-x86_64.msi
