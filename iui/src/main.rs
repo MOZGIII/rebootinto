@@ -1,3 +1,5 @@
+#![windows_subsystem = "windows"]
+
 use failure::Error;
 use rebootinto_core as core;
 
