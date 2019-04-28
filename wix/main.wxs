@@ -29,9 +29,6 @@
               <File Id='rebootinto_tui_exe' Name='rebootinto-tui.exe' DiskId='1' Source='target\release\rebootinto-tui.exe' KeyPath='yes'/>
             </Component>
 
-            <Component Id='rebootinto_libui_binary' Guid='*' Win64='$(var.Win64)'>
-              <File Id='rebootinto_libui_dll' Name='libui.dll' DiskId='1' Source='target\release\build\ui-sys-4e1a9d7334d7f5dd\out\build\out\Release\libui.dll' KeyPath='yes'/>
-            </Component>
             <Component Id='rebootinto_iui_binary' Guid='*' Win64='$(var.Win64)'>
               <File Id='rebootinto_iui_exe' Name='rebootinto-iui.exe' DiskId='1' Source='target\release\rebootinto-iui.exe' KeyPath='yes'/>
             </Component>
@@ -59,7 +56,6 @@
       </Feature>
     </Feature>
     <Feature Id='feature_rebootinto_iui' Title='Graphical interface (IUI)' Description='Installs the iui based Graphical UI executable.' Level='1' ConfigurableDirectory='APPLICATIONFOLDER' AllowAdvertise='no' Display='expand' Absent='disallow'>
-      <ComponentRef Id='rebootinto_libui_binary'/>
       <ComponentRef Id='rebootinto_iui_binary'/>
       <Feature Id='feature_start_menu_shortcut_iui' Title='Start Menu Shortcuts' Description='Add start menu shortcuts for iui based GUI.' Level='1' Absent='allow'>
         <ComponentRef Id='rebootinto_iui_shortcut'/>
