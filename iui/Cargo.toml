@@ -6,7 +6,11 @@ edition = "2018"
 
 [dependencies]
 failure = "0.1"
-iui = "0.3"
+
+[dependencies.iui]
+git = "https://github.com/MOZGIII/libui-rs.git"
+rev = "aa89ecef90ed1cb462ebbd1e159fd6e4f383b306"
+features = ["static"]
 
 [dependencies.rebootinto-core]
 path = "../core"
