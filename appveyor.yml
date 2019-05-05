@@ -47,6 +47,8 @@ test_script:
   - cargo test --release
 
 artifacts:
+  - path: target/release/rebootinto-cli.exe
+    name: rebootinto-cli.exe
   - path: target/release/rebootinto-tui.exe
     name: rebootinto-tui.exe
   - path: target/release/rebootinto-iui.exe
