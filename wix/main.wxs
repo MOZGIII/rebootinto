@@ -25,6 +25,10 @@
               <Environment Id='PATH' Name='PATH' Value='[Bin]' Permanent='no' Part='last' Action='set' System='yes'/>
             </Component>
 
+            <Component Id='rebootinto_cli_binary' Guid='*' Win64='$(var.Win64)'>
+              <File Id='rebootinto_cli_exe' Name='rebootinto-cli.exe' DiskId='1' Source='target\release\rebootinto-cli.exe' KeyPath='yes'/>
+            </Component>
+
             <Component Id='rebootinto_tui_binary' Guid='*' Win64='$(var.Win64)'>
               <File Id='rebootinto_tui_exe' Name='rebootinto-tui.exe' DiskId='1' Source='target\release\rebootinto-tui.exe' KeyPath='yes'/>
             </Component>
@@ -49,6 +53,9 @@
       </Directory>
     </Directory>
 
+    <Feature Id='feature_rebootinto_cli' Title='Command Line Interface (CLI)' Description='Installs command line executable.' Level='1' ConfigurableDirectory='APPLICATIONFOLDER' AllowAdvertise='no' Display='expand' Absent='disallow'>
+      <ComponentRef Id='rebootinto_cli_binary'/>
+    </Feature>
     <Feature Id='feature_rebootinto_tui' Title='Terminal interface (TUI)' Description='Installs the tui based Terminal UI executable.' Level='1' ConfigurableDirectory='APPLICATIONFOLDER' AllowAdvertise='no' Display='expand' Absent='disallow'>
       <ComponentRef Id='rebootinto_tui_binary'/>
       <Feature Id='feature_start_menu_shortcut_tui' Title='Start Menu Shortcuts' Description='Add start menu shortcuts for tui based TUI.' Level='1' Absent='allow'>
