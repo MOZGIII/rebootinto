@@ -10,3 +10,6 @@ clap = "2.33"
 
 [dependencies.rebootinto-core]
 path = "../core"
+
+[build-dependencies]
+embed-resource = "1.2.0"
