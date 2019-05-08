@@ -14,7 +14,7 @@ This project provides a Command Line (`rebootinto-cli`), Terminal UI (`rebootint
 
 Grab packages from the [Github releases](https://github.com/MOZGIII/rebootinto/releases).
 
-Not all installation options are currently uploaded to the Guthub repos, use other installation options if you didn't find
+Not all installation artifacts are currently uploaded to the Github repos, use other installation methods if you didn't find
 what you was looking for.
 
 ### CI artifacts
@@ -22,7 +22,7 @@ what you was looking for.
 You can download prebuilt binaries from CI system artifacts storage. Find a commit that has a CI build associated and grab
 stuff from there.
 As with guthub releases, not everything is currently built there, so is you didn't find what you was looking for - try other
-installation options.
+installation methods.
 
 ### Source installation
 
