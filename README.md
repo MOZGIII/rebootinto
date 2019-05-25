@@ -21,7 +21,7 @@ what you was looking for.
 
 You can download prebuilt binaries from CI system artifacts storage. Find a commit that has a CI build associated and grab
 stuff from there.
-As with github releases, not everything is currently built there, so is you didn't find what you was looking for - try other
+As with github releases, not everything is currently built there, so if you didn't find what you was looking for - try other
 installation methods.
 
 ### Source installation
