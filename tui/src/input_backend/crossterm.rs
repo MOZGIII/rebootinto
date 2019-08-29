@@ -46,7 +46,7 @@ pub mod async_reader {
     fn casts_to_input_backend() {
         use super::InputBackend;
         let mut concrete = create_input_backend();
-        let _backend: &mut InputBackend = &mut concrete;
+        let _backend: &mut dyn InputBackend = &mut concrete;
     }
 }
 

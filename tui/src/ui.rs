@@ -9,7 +9,7 @@ use crate::Result;
 
 pub struct BootNextSelectorUI<'a, B: tui::backend::Backend> {
     terminal: &'a mut Terminal<B>,
-    input: &'a mut InputBackend,
+    input: &'a mut dyn InputBackend,
     items: &'a [Item],
     current_item: usize,
 }
@@ -17,7 +17,7 @@ pub struct BootNextSelectorUI<'a, B: tui::backend::Backend> {
 impl<'a, B: tui::backend::Backend> BootNextSelectorUI<'a, B> {
     pub fn new(
         terminal: &'a mut Terminal<B>,
-        input: &'a mut InputBackend,
+        input: &'a mut dyn InputBackend,
         items: &'a [Item],
         current_item: usize,
     ) -> Self {

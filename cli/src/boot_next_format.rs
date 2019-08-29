@@ -5,7 +5,7 @@ pub enum BootNextFormat {
 }
 
 impl std::fmt::Display for BootNextFormat {
-  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+  fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
     match self {
       BootNextFormat::Hex => write!(f, "hex"),
       BootNextFormat::Dec => write!(f, "decimal"),
@@ -39,7 +39,7 @@ impl BootNextFormat {
 
   pub fn parse_boot_next(
     &self,
-    matches: &clap::ArgMatches,
+    matches: &clap::ArgMatches<'_>,
     arg_name: &str,
   ) -> Result<u16, clap::Error> {
     if let Some(value) = matches.value_of(arg_name) {

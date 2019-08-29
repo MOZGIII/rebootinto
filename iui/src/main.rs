@@ -1,3 +1,4 @@
+#![warn(rust_2018_idioms)]
 #![windows_subsystem = "windows"]
 
 use failure::Error;

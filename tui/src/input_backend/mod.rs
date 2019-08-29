@@ -16,5 +16,5 @@ pub use self::termion::*;
 #[test]
 fn create_input_backend_casts_to_input_backend() {
     let mut concrete = self::create_input_backend();
-    let _backend: &mut InputBackend = &mut concrete;
+    let _backend: &mut dyn InputBackend = &mut concrete;
 }
