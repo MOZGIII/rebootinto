@@ -16,4 +16,4 @@ features = ["static"]
 path = "../core"
 
 [build-dependencies]
-embed-resource = "1.2.0"
+embed-resource = "*"

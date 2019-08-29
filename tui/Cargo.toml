@@ -32,4 +32,4 @@ termion_backend = ["termion", "tui", "tui/termion"]
 default = ["crossterm_backend"]
 
 [build-dependencies]
-embed-resource = "1.2.0"
+embed-resource = "*"
