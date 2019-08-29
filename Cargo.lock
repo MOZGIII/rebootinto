@@ -255,7 +255,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
 name = "embed-resource"
-version = "1.2.0"
+version = "1.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "vswhom 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -360,7 +360,7 @@ version = "0.1.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "bindgen 0.49.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "embed-resource 1.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "embed-resource 1.3.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "pkg-config 0.3.14 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
@@ -427,7 +427,7 @@ name = "rebootinto-cli"
 version = "0.1.0"
 dependencies = [
  "clap 2.33.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "embed-resource 1.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "embed-resource 1.3.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "failure 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)",
  "rebootinto-core 0.1.0",
 ]
@@ -447,7 +447,7 @@ dependencies = [
 name = "rebootinto-iui"
 version = "0.1.0"
 dependencies = [
- "embed-resource 1.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "embed-resource 1.3.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "failure 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)",
  "iui 0.3.0 (git+https://github.com/MOZGIII/libui-rs.git?rev=aa89ecef90ed1cb462ebbd1e159fd6e4f383b306)",
  "rebootinto-core 0.1.0",
@@ -458,7 +458,7 @@ name = "rebootinto-tui"
 version = "0.1.0"
 dependencies = [
  "crossterm 0.10.2 (registry+https://github.com/rust-lang/crates.io-index)",
- "embed-resource 1.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "embed-resource 1.3.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "failure 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)",
  "failure_derive 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)",
  "rebootinto-core 0.1.0",
@@ -730,7 +730,7 @@ dependencies = [
 "checksum efibootnext 0.1.0 (git+https://github.com/MOZGIII/efibootnext.git?rev=3410b105715d970adf5b1e47b75420f0282beaba)" = "<none>"
 "checksum efivar 0.1.0 (git+https://github.com/MOZGIII/efiboot-rs.git?rev=9ab65ba399ad18770fbd755d5ec6f24a72d358a4)" = "<none>"
 "checksum either 1.5.2 (registry+https://github.com/rust-lang/crates.io-index)" = "5527cfe0d098f36e3f8839852688e63c8fff1c90b2b405aef730615f9a7bcf7b"
-"checksum embed-resource 1.2.0 (registry+https://github.com/rust-lang/crates.io-index)" = "ee11dd277e159f3a7845341f8c800899cf918a366956e31dd52f35eff638a403"
+"checksum embed-resource 1.3.0 (registry+https://github.com/rust-lang/crates.io-index)" = "e1419cfb011b3f11cbe865738cc2a36cc574437de4e3f2a1a57f118b230aa4f3"
 "checksum env_logger 0.6.1 (registry+https://github.com/rust-lang/crates.io-index)" = "b61fa891024a945da30a9581546e8cfaf5602c7b3f4c137a2805cf388f92075a"
 "checksum failure 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)" = "795bd83d3abeb9220f257e597aa0080a508b27533824adf336529648f6abf7e2"
 "checksum failure_derive 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)" = "ea1063915fd7ef4309e222a5a07cf9c319fb9c7836b1f89b85458672dbb127e1"
