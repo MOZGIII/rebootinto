@@ -12,8 +12,8 @@ failure_derive = "0.1"
 path = "../core"
 
 [dependencies.tui]
-git = "https://github.com/TimonPost/tui-rs.git"
-rev = "2c8548ca92ec95db98d4229b4202513113983514"
+git = "https://github.com/fdehau/tui-rs.git"
+rev = "e183d63a5ef4680d68def76fff06156c4e67e87e"
 default-features = false
 optional = true
 
@@ -22,7 +22,7 @@ version = "1.5"
 optional = true
 
 [dependencies.crossterm]
-version = "0.9"
+version = "0.10"
 optional = true
 
 [features]
