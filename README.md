@@ -36,33 +36,33 @@ You'll need a [`Rust` installation](https://www.rust-lang.org/tools/install) (st
 2. `cargo build --release`
 
 3. Install built executables
-  
-  - Raw binaries
-    
-    Copy `rebootinto-*` executables from `target/release/` to your desired location.
-    
-  - Windows installation via `.msi` file.
-  
-    1. Install cargo WIX plugin
-    
-       `cargo install cargo-wix`
-    
-    2. Build MSI installer
-    
-       `cargo wix`
 
-  - Debian/Ubuntu installation via locally built `.deb` packages.
-  
-    1. Install cargo deb plugin
-    
-       `cargo install cargo-deb`
-       
-    2. `cd` into each application directory, build and install `.deb` packages
-    
-       ```shell
-       cd cli
-       cargo deb
-       cd -
-       cd target/debian
-       sudo dpkg -i rebootinto-*.deb
-       ```
+   - Raw binaries
+
+     Copy `rebootinto-*` executables from `target/release/` to your desired location.
+
+   - Windows installation via `.msi` file.
+
+     1. Install cargo WIX plugin
+
+     `cargo install cargo-wix`
+
+     2. Build MSI installer
+
+     `cargo wix`
+
+   - Debian/Ubuntu installation via locally built `.deb` packages.
+
+     1. Install cargo deb plugin
+
+     `cargo install cargo-deb`
+
+     2. `cd` into each application directory, build and install `.deb` packages
+
+     ```shell
+     cd cli
+     cargo deb
+     cd -
+     cd target/debian
+     sudo dpkg -i rebootinto-*.deb
+     ```
