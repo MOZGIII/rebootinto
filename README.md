@@ -26,6 +26,9 @@ installation methods.
 
 ### Source installation
 
+> When building on Windows, use Visual Studio shell, or somehow otherwise point
+> the build system to the Windows Resource Compiler.
+
 You'll need a [`Rust` installation](https://www.rust-lang.org/tools/install) (stable).
 
 1. Clone the repo and `cd` into it.
