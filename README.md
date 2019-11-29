@@ -24,6 +24,9 @@ stuff from there.
 As with github releases, not everything is currently built there, so if you didn't find what you was looking for - try other
 installation methods.
 
+- [Travis CI](https://travis-ci.org/MOZGIII/rebootinto)
+- [AppVeyor](https://ci.appveyor.com/project/MOZGIII/rebootinto)
+
 ### Source installation
 
 > When building on Windows, use Visual Studio shell, or somehow otherwise point
