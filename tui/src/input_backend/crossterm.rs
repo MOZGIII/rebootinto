@@ -1,6 +1,6 @@
 use super::InputBackend;
 use crate::event::Event;
-use crossterm::{InputEvent, KeyEvent};
+use crossterm::input::{InputEvent, KeyEvent, input};
 
 pub struct CrosstermInputBackend<I>
 where
@@ -34,11 +34,12 @@ impl<I> InputBackend for CrosstermInputBackend<I> where I: Iterator<Item = Input
 
 #[cfg(not(feature = "crossterm_backend_sync_input"))]
 pub mod async_reader {
-    use super::CrosstermInputBackend;
+    use super::*;
+    use crossterm::input::AsyncReader;
 
-    pub fn create_input_backend() -> CrosstermInputBackend<crossterm::AsyncReader> {
+    pub fn create_input_backend() -> CrosstermInputBackend<AsyncReader> {
         CrosstermInputBackend {
-            iter: Box::new(crossterm::input().read_async()),
+            iter: Box::new(input().read_async()),
         }
     }
 
@@ -55,11 +56,12 @@ pub use self::async_reader::*;
 
 #[cfg(feature = "crossterm_backend_sync_input")]
 pub mod sync_reader {
-    use super::CrosstermInputBackend;
+    use super::*;
+    use crossterm::input::SyncReader;
 
-    pub fn create_input_backend() -> CrosstermInputBackend<crossterm::SyncReader> {
+    pub fn create_input_backend() -> CrosstermInputBackend<SyncReader> {
         CrosstermInputBackend {
-            iter: Box::new(crossterm::input().read_sync()),
+            iter: Box::new(input().read_sync()),
         }
     }
 

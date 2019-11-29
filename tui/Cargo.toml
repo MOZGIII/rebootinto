@@ -12,8 +12,7 @@ failure_derive = "0.1"
 path = "../core"
 
 [dependencies.tui]
-git = "https://github.com/fdehau/tui-rs.git"
-rev = "e183d63a5ef4680d68def76fff06156c4e67e87e"
+version = "0.7"
 default-features = false
 optional = true
 
@@ -22,7 +21,7 @@ version = "1.5"
 optional = true
 
 [dependencies.crossterm]
-version = "0.10"
+version = "0.13"
 optional = true
 
 [features]
