@@ -8,11 +8,5 @@ edition = "2018"
 failure = "0.1"
 failure_derive = "0.1"
 simplereboot = "0.1"
-
-[dependencies.efibootnext]
-git = "https://github.com/MOZGIII/efibootnext.git"
-rev = "3410b105715d970adf5b1e47b75420f0282beaba"
-
-[dependencies.efivar]
-git = "https://github.com/MOZGIII/efiboot-rs.git"
-rev = "9ab65ba399ad18770fbd755d5ec6f24a72d358a4"
+efivar = "0.1"
+efibootnext = "0.1"
