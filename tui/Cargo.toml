@@ -12,7 +12,7 @@ failure_derive = "0.1"
 path = "../core"
 
 [dependencies.tui]
-version = "0.7"
+version = "0.8"
 default-features = false
 optional = true
 
