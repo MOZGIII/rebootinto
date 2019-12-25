@@ -20,7 +20,7 @@ impl Iterator for TermionInputBackend {
             Some(Err(_)) => return None,
         };
         Some(match evt {
-            TermionEvent::Key(Key::Char('q')) => Event::Quit,
+            TermionEvent::Key(Key::Char('q')) | TermionEvent::Key(Key::Esc) => Event::Quit,
             TermionEvent::Key(Key::Down) => Event::Down,
             TermionEvent::Key(Key::Up) => Event::Up,
             TermionEvent::Key(Key::Char('\n')) => Event::Enter,

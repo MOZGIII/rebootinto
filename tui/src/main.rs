@@ -8,6 +8,9 @@ use rebootinto_core as core;
 
 use tui::Terminal;
 
+#[macro_use]
+mod macros;
+
 mod error;
 mod event;
 mod input_backend;
@@ -17,6 +20,7 @@ mod ui;
 
 use error::NoLoadOptions;
 use item::Item;
+use terminal_backend::Backend;
 use ui::BootNextSelectorUI;
 
 type Result<T> = std::result::Result<T, Error>;
@@ -44,7 +48,7 @@ fn run() -> Result<()> {
     }
 
     let reboot_into = {
-        let backend = terminal_backend::create_terminal_backend()?;
+        let backend = terminal_backend::Impl::new()?;
         let mut terminal = Terminal::new(backend)?;
         terminal.hide_cursor()?;
 
@@ -54,6 +58,9 @@ fn run() -> Result<()> {
         let mut ui = BootNextSelectorUI::new(&mut terminal, &mut input, &items, 0);
 
         let selected_item_idx = ui.run()?;
+        terminal.show_cursor()?;
+        drop(terminal);
+
         selected_item_idx.map(|e| items.swap_remove(e).into_inner())
     };
 

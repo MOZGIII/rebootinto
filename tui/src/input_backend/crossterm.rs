@@ -1,77 +1,54 @@
 use super::InputBackend;
 use crate::event::Event;
-use crossterm::input::{InputEvent, KeyEvent, input};
+use crossterm::event::{read, Event as CrosstermEvent, KeyCode, KeyEvent};
 
-pub struct CrosstermInputBackend<I>
-where
-    I: Iterator<Item = InputEvent>,
-{
-    iter: Box<I>,
-}
+pub struct CrosstermInputBackend;
 
-impl<I> Iterator for CrosstermInputBackend<I>
-where
-    I: Iterator<Item = InputEvent>,
-{
+impl Iterator for CrosstermInputBackend {
     type Item = Event;
 
     fn next(&mut self) -> Option<Self::Item> {
-        let evt = match self.iter.next() {
-            None => return None,
-            Some(evt) => evt,
+        let evt = match read() {
+            Err(_) => return None,
+            Ok(evt) => evt,
         };
         Some(match evt {
-            InputEvent::Keyboard(KeyEvent::Char('q')) => Event::Quit,
-            InputEvent::Keyboard(KeyEvent::Down) => Event::Down,
-            InputEvent::Keyboard(KeyEvent::Up) => Event::Up,
-            InputEvent::Keyboard(KeyEvent::Char('\n')) => Event::Enter,
+            CrosstermEvent::Key(KeyEvent {
+                code: KeyCode::Char('q'),
+                ..
+            })
+            | CrosstermEvent::Key(KeyEvent {
+                code: KeyCode::Esc, ..
+            }) => Event::Quit,
+            CrosstermEvent::Key(KeyEvent {
+                code: KeyCode::Down,
+                ..
+            }) => Event::Down,
+            CrosstermEvent::Key(KeyEvent {
+                code: KeyCode::Up, ..
+            }) => Event::Up,
+            CrosstermEvent::Key(KeyEvent {
+                code: KeyCode::Char('\n'),
+                ..
+            })
+            | CrosstermEvent::Key(KeyEvent {
+                code: KeyCode::Enter,
+                ..
+            }) => Event::Enter,
             _ => Event::Unsupported,
         })
     }
 }
 
-impl<I> InputBackend for CrosstermInputBackend<I> where I: Iterator<Item = InputEvent> {}
+impl InputBackend for CrosstermInputBackend {}
 
-#[cfg(not(feature = "crossterm_backend_sync_input"))]
-pub mod async_reader {
-    use super::*;
-    use crossterm::input::AsyncReader;
-
-    pub fn create_input_backend() -> CrosstermInputBackend<AsyncReader> {
-        CrosstermInputBackend {
-            iter: Box::new(input().read_async()),
-        }
-    }
-
-    #[test]
-    fn casts_to_input_backend() {
-        use super::InputBackend;
-        let mut concrete = create_input_backend();
-        let _backend: &mut dyn InputBackend = &mut concrete;
-    }
+pub fn create_input_backend() -> CrosstermInputBackend {
+    CrosstermInputBackend
 }
 
-#[cfg(not(feature = "crossterm_backend_sync_input"))]
-pub use self::async_reader::*;
-
-#[cfg(feature = "crossterm_backend_sync_input")]
-pub mod sync_reader {
-    use super::*;
-    use crossterm::input::SyncReader;
-
-    pub fn create_input_backend() -> CrosstermInputBackend<SyncReader> {
-        CrosstermInputBackend {
-            iter: Box::new(input().read_sync()),
-        }
-    }
-
-    #[test]
-    fn casts_to_input_backend() {
-        use super::InputBackend;
-        let mut concrete = create_input_backend();
-        let _backend: &mut dyn InputBackend = &mut concrete;
-    }
+#[test]
+fn casts_to_input_backend() {
+    use super::InputBackend;
+    let mut concrete = create_input_backend();
+    let _backend: &mut dyn InputBackend = &mut concrete;
 }
-
-#[cfg(feature = "crossterm_backend_sync_input")]
-pub use self::sync_reader::*;
