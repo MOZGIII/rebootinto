@@ -173,7 +173,7 @@ dependencies = [
 
 [[package]]
 name = "efibootnext"
-version = "0.1.1"
+version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "byteorder 1.3.2 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -486,8 +486,7 @@ dependencies = [
 name = "rebootinto-core"
 version = "0.1.0"
 dependencies = [
- "efibootnext 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
- "efivar 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "efibootnext 0.2.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "failure 0.1.6 (registry+https://github.com/rust-lang/crates.io-index)",
  "failure_derive 0.1.6 (registry+https://github.com/rust-lang/crates.io-index)",
  "simplereboot 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -804,7 +803,7 @@ dependencies = [
 "checksum crossterm 0.14.2 (registry+https://github.com/rust-lang/crates.io-index)" = "5750773d74a7dc612eac2ded3f55e9cdeeaa072210cd17c0192aedb48adb3618"
 "checksum crossterm_winapi 0.5.1 (registry+https://github.com/rust-lang/crates.io-index)" = "8777c700901e2d5b50c406f736ed6b8f9e43645c7e104ddb74f8bc42b8ae62f6"
 "checksum efi-loadopt 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "a2462a54e80a3aab33753ecf179b6b37d6f00e9eb1ab0d202bac889f78c0e276"
-"checksum efibootnext 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)" = "cb2c285921d723e7a2571b1ca2bd1a21562b0ddaae174d2115455c1ca401c1e9"
+"checksum efibootnext 0.2.1 (registry+https://github.com/rust-lang/crates.io-index)" = "797de5d1252d418220b2c98366e0579b4f6e0d117903086e513630ea2419720b"
 "checksum efivar 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "2e71b8820d112c26921bd66676b10fd7dd79913dd8fc5140d2ceae0f9ab2d644"
 "checksum either 1.5.3 (registry+https://github.com/rust-lang/crates.io-index)" = "bb1f6b1ce1c140482ea30ddd3335fc0024ac7ee112895426e0a629a6c20adfe3"
 "checksum embed-resource 1.3.1 (registry+https://github.com/rust-lang/crates.io-index)" = "bbaba4684ab0af1cbb3ef0b1f540ddc4b57b31940c920ea594efe09ab86e2a6c"
