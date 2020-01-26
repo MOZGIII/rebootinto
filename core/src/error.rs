@@ -1,3 +1,5 @@
+use failure_derive::Fail;
+
 #[derive(Fail, Debug)]
 pub enum RebootIntoErrorKind {
     #[fail(display = "set BootNext error: {}", _0)]

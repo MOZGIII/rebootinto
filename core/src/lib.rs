@@ -1,8 +1,5 @@
 #![warn(rust_2018_idioms)]
 
-#[macro_use]
-extern crate failure_derive;
-
 use efibootnext::Adapter;
 pub use efibootnext::LoadOption;
 pub use failure::Error;
