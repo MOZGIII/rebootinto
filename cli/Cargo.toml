@@ -22,4 +22,4 @@ version = "0.1"
 path = "../core"
 
 [build-dependencies]
-embed-resource = "*"
+embed-resource = "1"
