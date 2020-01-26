@@ -6,7 +6,7 @@ edition = "2018"
 description = "The Terminal UI tool for rebooting into other OS."
 license = "MIT"
 repository = "https://github.com/MOZGIII/rebootinto"
-keywords = ["rebootinto", "reboot", "efi", "uefi", "ui", "tui", "terminal", "crossterm", "termion"]
+keywords = ["rebootinto", "reboot", "efi", "uefi", "tui"]
 
 [badges]
 travis-ci = { repository = "MOZGIII/rebootinto" }
