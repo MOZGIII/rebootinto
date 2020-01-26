@@ -17,6 +17,7 @@ failure = "0.1"
 failure_derive = "0.1"
 
 [dependencies.rebootinto-core]
+version = "0.1"
 path = "../core"
 
 [dependencies.tui]

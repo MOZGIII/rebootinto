@@ -22,6 +22,7 @@ rev = "aa89ecef90ed1cb462ebbd1e159fd6e4f383b306"
 features = ["static"]
 
 [dependencies.rebootinto-core]
+version = "0.1"
 path = "../core"
 
 [build-dependencies]

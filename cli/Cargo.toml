@@ -18,6 +18,7 @@ failure = "0.1"
 clap = "2.33"
 
 [dependencies.rebootinto-core]
+version = "0.1"
 path = "../core"
 
 [build-dependencies]
