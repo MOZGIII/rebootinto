@@ -3,6 +3,8 @@ name = "rebootinto-cli"
 version = "0.1.0"
 authors = ["MOZGIII <mike-n@narod.ru>"]
 edition = "2018"
+description = "The command line tool for rebooting into other OS."
+license = "MIT"
 
 [dependencies]
 failure = "0.1"
