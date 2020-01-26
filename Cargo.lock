@@ -479,12 +479,12 @@ dependencies = [
  "clap 2.33.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "embed-resource 1.3.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "failure 0.1.6 (registry+https://github.com/rust-lang/crates.io-index)",
- "rebootinto-core 0.1.0",
+ "rebootinto-core 0.1.1",
 ]
 
 [[package]]
 name = "rebootinto-core"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "efibootnext 0.2.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "failure 0.1.6 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -499,7 +499,7 @@ dependencies = [
  "embed-resource 1.3.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "failure 0.1.6 (registry+https://github.com/rust-lang/crates.io-index)",
  "iui 0.3.0 (git+https://github.com/MOZGIII/libui-rs.git?rev=aa89ecef90ed1cb462ebbd1e159fd6e4f383b306)",
- "rebootinto-core 0.1.0",
+ "rebootinto-core 0.1.1",
 ]
 
 [[package]]
@@ -510,7 +510,7 @@ dependencies = [
  "embed-resource 1.3.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "failure 0.1.6 (registry+https://github.com/rust-lang/crates.io-index)",
  "failure_derive 0.1.6 (registry+https://github.com/rust-lang/crates.io-index)",
- "rebootinto-core 0.1.0",
+ "rebootinto-core 0.1.1",
  "termion 1.5.5 (registry+https://github.com/rust-lang/crates.io-index)",
  "tui 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
 ]

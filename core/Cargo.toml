@@ -1,6 +1,6 @@
 [package]
 name = "rebootinto-core"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["MOZGIII <mike-n@narod.ru>"]
 edition = "2018"
 description = "The core API for rebooting into other OS."
