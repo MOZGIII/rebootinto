@@ -1,4 +1,5 @@
 #![warn(rust_2018_idioms)]
+#![warn(clippy::all)]
 
 #[macro_use]
 extern crate clap;
@@ -72,7 +73,7 @@ fn run() -> Result<()> {
                 .parse_boot_next(submatches, "boot_next")
                 .unwrap_or_else(|e| e.exit());
 
-            let _ = backend.reboot_into(boot_next)?;
+            backend.reboot_into(boot_next)?;
 
             println!("{:04X}", boot_next);
             Ok(())

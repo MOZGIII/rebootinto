@@ -19,8 +19,6 @@ impl AsRef<str> for Item {
 
 impl From<core::LoadOption> for Item {
     fn from(load_option: core::LoadOption) -> Self {
-        Self {
-            load_option: load_option,
-        }
+        Self { load_option }
     }
 }

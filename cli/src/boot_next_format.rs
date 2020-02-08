@@ -48,8 +48,7 @@ impl BootNextFormat {
                 Err(_) => Err(clap::Error::value_validation_auto(format!(
                     "The argument '{}' isn't a valid {} value",
                     value, &self
-                ))
-                .into()),
+                ))),
             }
         } else {
             Err(::clap::Error::argument_not_found_auto(arg_name))

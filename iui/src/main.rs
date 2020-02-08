@@ -1,4 +1,5 @@
 #![warn(rust_2018_idioms)]
+#![warn(clippy::all)]
 #![windows_subsystem = "windows"]
 
 use failure::Error;
@@ -59,7 +60,7 @@ fn run() -> Result<()> {
                     win.modal_err(&ui, "Reboot error", &format!("Error: {}", err));
                 } else {
                     let text = format!("Rebooting into:\n{}", load_option.description);
-                    &lbl_reboot.set_text(&ui, &text);
+                    lbl_reboot.set_text(&ui, &text);
                     win.set_child(&ui, vbox_rebooting.clone());
                 }
             }

@@ -1,4 +1,5 @@
 #![warn(rust_2018_idioms)]
+#![warn(clippy::all)]
 
 use efibootnext::Adapter;
 pub use efibootnext::LoadOption;
@@ -19,7 +20,7 @@ impl Backend {
         })
     }
 
-    pub fn load_options<'a>(&'a mut self) -> impl Iterator<Item = Result<LoadOption>> + 'a {
+    pub fn load_options(&mut self) -> impl Iterator<Item = Result<LoadOption>> + '_ {
         self.adapter.load_options()
     }
 
@@ -28,7 +29,7 @@ impl Backend {
             .set_boot_next(num)
             .map_err(error::RebootIntoErrorKind::SetBootNextError)?;
         simplereboot::reboot()
-            .map_err(|e| Error::from(e))
+            .map_err(Error::from)
             .map_err(error::RebootIntoErrorKind::RebootError)?;
         Ok(())
     }

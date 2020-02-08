@@ -1,4 +1,5 @@
 #![warn(rust_2018_idioms)]
+#![warn(clippy::all)]
 
 #[macro_use]
 extern crate failure_derive;
@@ -54,7 +55,7 @@ fn run() -> Result<()> {
 
         let mut input = input_backend::create_input_backend();
 
-        let mut items: Vec<Item> = load_options.into_iter().map(|e| Item::from(e)).collect();
+        let mut items: Vec<Item> = load_options.into_iter().map(Item::from).collect();
         let mut ui = BootNextSelectorUI::new(&mut terminal, &mut input, &items, 0);
 
         let selected_item_idx = ui.run()?;

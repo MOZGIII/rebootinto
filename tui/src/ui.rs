@@ -22,10 +22,10 @@ impl<'a, B: tui::backend::Backend> BootNextSelectorUI<'a, B> {
         current_item: usize,
     ) -> Self {
         Self {
-            terminal: terminal,
-            input: input,
-            items: items,
-            current_item: current_item,
+            terminal,
+            input,
+            items,
+            current_item,
         }
     }
 
