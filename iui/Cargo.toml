@@ -18,7 +18,7 @@ failure = "0.1"
 
 [dependencies.iui]
 git = "https://github.com/MOZGIII/libui-rs.git"
-rev = "aa89ecef90ed1cb462ebbd1e159fd6e4f383b306"
+rev = "5d526e4d8d817a0736f60835259070ffa58b8b42"
 features = ["static"]
 
 [dependencies.rebootinto-core]
