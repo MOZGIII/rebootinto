@@ -48,24 +48,24 @@ You'll need a [`Rust` installation](https://www.rust-lang.org/tools/install) (st
 
      1. Install cargo WIX plugin
 
-     `cargo install cargo-wix`
+         `cargo install cargo-wix`
 
      2. Build MSI installer
 
-     `cargo wix`
+         `cargo wix`
 
    - Debian/Ubuntu installation via locally built `.deb` packages.
 
      1. Install cargo deb plugin
 
-     `cargo install cargo-deb`
+         `cargo install cargo-deb`
 
      2. `cd` into each application directory, build and install `.deb` packages
 
-     ```shell
-     cd cli
-     cargo deb
-     cd -
-     cd target/debian
-     sudo dpkg -i rebootinto-*.deb
-     ```
+         ```shell
+         cd cli
+         cargo deb
+         cd -
+         cd target/debian
+         sudo dpkg -i rebootinto-*.deb
+        ```
