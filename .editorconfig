@@ -16,3 +16,7 @@ indent_size = 4
 [*.manifest]
 indent_style = space
 indent_size = 4
+
+[debian/rules]
+indent_style = tab
+indent_size = 4
