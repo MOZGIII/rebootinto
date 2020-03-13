@@ -1,0 +1,11 @@
+*
+
+!.gitignore
+!*.install
+!changelog
+!compat
+!control
+!copyright
+!rules
+!source
+!source/format

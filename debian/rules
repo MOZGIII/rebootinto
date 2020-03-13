@@ -1,0 +1,20 @@
+#!/usr/bin/make -f
+%:
+	dh $@
+
+override_dh_auto_clean:
+	cargo clean
+
+override_dh_auto_test:
+	cargo test --release
+
+override_dh_auto_build:
+	cargo build --release
+
+override_dh_auto_install:
+	mkdir -p debian/tmp/usr/bin/
+	cp \
+		target/release/rebootinto-cli \
+		target/release/rebootinto-tui \
+		target/release/rebootinto-iui \
+		debian/tmp/usr/bin/

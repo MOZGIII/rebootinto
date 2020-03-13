@@ -1,0 +1,24 @@
+Source: rebootinto
+Section: utils
+Priority: optional
+Maintainer: MOZGIII <mike-n@narod.ru>
+Build-Depends: debhelper (>= 10), dh-exec
+Standards-Version: 4.1.2
+Homepage: https://github.com/MOZGIII/rebootinto
+Vcs-Git: https://github.com/MOZGIII/rebootinto.git
+Vcs-Browser: https://github.com/MOZGIII/rebootinto
+
+Package: rebootinto-cli
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: The command line tool for rebooting into other OS.
+
+Package: rebootinto-tui
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: The Terminal UI tool for rebooting into other OS.
+
+Package: rebootinto-iui
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: The IUI-based GUI tool for rebooting into other OS.
