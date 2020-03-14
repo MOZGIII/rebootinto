@@ -2,7 +2,7 @@ Source: rebootinto
 Section: utils
 Priority: optional
 Maintainer: MOZGIII <mike-n@narod.ru>
-Build-Depends: debhelper (>= 10), dh-exec, cargo, clang, meson
+Build-Depends: debhelper (>= 10), dh-exec, cargo, clang, meson, pkg-config
 Standards-Version: 4.1.2
 Homepage: https://github.com/MOZGIII/rebootinto
 Vcs-Git: https://github.com/MOZGIII/rebootinto.git
