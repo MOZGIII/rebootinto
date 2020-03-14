@@ -2,6 +2,8 @@
 %:
 	dh $@
 
+export CARGO_HOME=debian/tmp/cargo
+
 override_dh_auto_clean:
 	cargo clean
 
