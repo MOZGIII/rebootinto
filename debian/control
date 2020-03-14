@@ -8,6 +8,11 @@ Homepage: https://github.com/MOZGIII/rebootinto
 Vcs-Git: https://github.com/MOZGIII/rebootinto.git
 Vcs-Browser: https://github.com/MOZGIII/rebootinto
 
+Package: rebootinto
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, rebootinto-cli, rebootinto-tui, rebootinto-iui
+Description: Tools for rebooting into other OS.
+
 Package: rebootinto-cli
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
