@@ -156,7 +156,7 @@ dependencies = [
 
 [[package]]
 name = "crossterm"
-version = "0.16.0"
+version = "0.17.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "bitflags 1.2.1 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -540,7 +540,7 @@ dependencies = [
 name = "rebootinto-tui"
 version = "0.1.0"
 dependencies = [
- "crossterm 0.16.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "crossterm 0.17.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "embed-resource 1.3.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "failure 0.1.7 (registry+https://github.com/rust-lang/crates.io-index)",
  "failure_derive 0.1.7 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -856,7 +856,7 @@ dependencies = [
 "checksum clap 2.33.0 (registry+https://github.com/rust-lang/crates.io-index)" = "5067f5bb2d80ef5d68b4c87db81601f0b75bca627bc2ef76b141d7b846a3c6d9"
 "checksum cloudabi 0.0.3 (registry+https://github.com/rust-lang/crates.io-index)" = "ddfc5b9aa5d4507acaf872de71051dfd0e309860e88966e1051e462a077aac4f"
 "checksum crossterm 0.14.2 (registry+https://github.com/rust-lang/crates.io-index)" = "5750773d74a7dc612eac2ded3f55e9cdeeaa072210cd17c0192aedb48adb3618"
-"checksum crossterm 0.16.0 (registry+https://github.com/rust-lang/crates.io-index)" = "b8a3223215bc00c666d6be730e88aef245ad4a4f837e87a16c347e8acf701643"
+"checksum crossterm 0.17.2 (registry+https://github.com/rust-lang/crates.io-index)" = "7d2cfea8393092f9ffcfa5f1f88e2fa27b3cf5e47cb175e6b8c41ec914680b8e"
 "checksum crossterm_winapi 0.5.1 (registry+https://github.com/rust-lang/crates.io-index)" = "8777c700901e2d5b50c406f736ed6b8f9e43645c7e104ddb74f8bc42b8ae62f6"
 "checksum crossterm_winapi 0.6.1 (registry+https://github.com/rust-lang/crates.io-index)" = "057b7146d02fb50175fd7dbe5158f6097f33d02831f43b4ee8ae4ddf67b68f5c"
 "checksum efi-loadopt 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "a2462a54e80a3aab33753ecf179b6b37d6f00e9eb1ab0d202bac889f78c0e276"
