@@ -56,15 +56,15 @@
     <Feature Id='feature_rebootinto_cli' Title='Command Line Interface (CLI)' Description='Installs command line executable.' Level='1' ConfigurableDirectory='APPLICATIONFOLDER' AllowAdvertise='no' Display='expand' Absent='disallow'>
       <ComponentRef Id='rebootinto_cli_binary'/>
     </Feature>
-    <Feature Id='feature_rebootinto_tui' Title='Terminal Interface (TUI)' Description='Installs the tui based Terminal UI executable.' Level='1' ConfigurableDirectory='APPLICATIONFOLDER' AllowAdvertise='no' Display='expand' Absent='disallow'>
+    <Feature Id='feature_rebootinto_tui' Title='Terminal Interface (TUI)' Description='Installs the tui-based Terminal UI executable.' Level='1' ConfigurableDirectory='APPLICATIONFOLDER' AllowAdvertise='no' Display='expand' Absent='disallow'>
       <ComponentRef Id='rebootinto_tui_binary'/>
-      <Feature Id='feature_start_menu_shortcut_tui' Title='Start Menu Shortcuts' Description='Add start menu shortcuts for tui based TUI.' Level='1' Absent='allow'>
+      <Feature Id='feature_start_menu_shortcut_tui' Title='Start Menu Shortcuts' Description='Add start menu shortcuts for tui-based TUI.' Level='1' Absent='allow'>
         <ComponentRef Id='rebootinto_tui_shortcut'/>
       </Feature>
     </Feature>
-    <Feature Id='feature_rebootinto_iui' Title='Graphical Interface (IUI)' Description='Installs the iui based Graphical UI executable.' Level='1' ConfigurableDirectory='APPLICATIONFOLDER' AllowAdvertise='no' Display='expand' Absent='disallow'>
+    <Feature Id='feature_rebootinto_iui' Title='Graphical Interface (IUI)' Description='Installs the iui-based Graphical UI executable.' Level='1' ConfigurableDirectory='APPLICATIONFOLDER' AllowAdvertise='no' Display='expand' Absent='disallow'>
       <ComponentRef Id='rebootinto_iui_binary'/>
-      <Feature Id='feature_start_menu_shortcut_iui' Title='Start Menu Shortcuts' Description='Add start menu shortcuts for iui based GUI.' Level='1' Absent='allow'>
+      <Feature Id='feature_start_menu_shortcut_iui' Title='Start Menu Shortcuts' Description='Add start menu shortcuts for iui-based GUI.' Level='1' Absent='allow'>
         <ComponentRef Id='rebootinto_iui_shortcut'/>
       </Feature>
     </Feature>
