@@ -1,5 +1,7 @@
 use crate::core;
 
+use tui::widgets::Text;
+
 #[derive(Debug)]
 pub struct Item {
     load_option: core::LoadOption,
@@ -14,6 +16,12 @@ impl Item {
 impl AsRef<str> for Item {
     fn as_ref(&self) -> &str {
         self.load_option.description.as_ref()
+    }
+}
+
+impl<'a> Into<Text<'a>> for &'a Item {
+    fn into(self) -> Text<'a> {
+        Text::raw(self.as_ref())
     }
 }
 

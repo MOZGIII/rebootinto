@@ -21,7 +21,7 @@ version = "0.1"
 path = "../core"
 
 [dependencies.tui]
-version = "0.8"
+version = "0.9"
 default-features = false
 optional = true
 
@@ -30,7 +30,7 @@ version = "1.5"
 optional = true
 
 [dependencies.crossterm]
-version = "0.16"
+version = "0.17"
 optional = true
 
 [features]

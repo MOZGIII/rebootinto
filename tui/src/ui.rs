@@ -1,17 +1,17 @@
 use crate::event::Event;
 use crate::input_backend::InputBackend;
 use tui::style::{Modifier, Style};
-use tui::widgets::{SelectableList, Widget};
+use tui::widgets::List;
 use tui::Terminal;
 
-use crate::Item;
+use crate::item::Item;
+use crate::stateful_list::StatefulList;
 use crate::Result;
 
 pub struct BootNextSelectorUI<'a, B: tui::backend::Backend> {
     terminal: &'a mut Terminal<B>,
     input: &'a mut dyn InputBackend,
-    items: &'a [Item],
-    current_item: usize,
+    state: StatefulList<'a, Item>,
 }
 
 impl<'a, B: tui::backend::Backend> BootNextSelectorUI<'a, B> {
@@ -21,62 +21,42 @@ impl<'a, B: tui::backend::Backend> BootNextSelectorUI<'a, B> {
         items: &'a [Item],
         current_item: usize,
     ) -> Self {
+        let state = StatefulList::new(items, current_item);
         Self {
             terminal,
             input,
-            items,
-            current_item,
+            state,
         }
     }
 
     pub fn run(&mut self) -> Result<Option<usize>> {
-        let mut result: Option<usize> = None;
+        let result = loop {
+            let state = &mut self.state;
 
-        loop {
-            let items = self.items;
-            let current_item = self.current_item;
-
-            self.terminal.draw(|mut f| {
-                let rect = f.size();
-                let style = Style::default();
-                SelectableList::default()
-                    .items(&items)
-                    .select(Some(current_item))
-                    .highlight_style(style.modifier(Modifier::BOLD))
-                    .highlight_symbol("-")
-                    .render(&mut f, rect);
-            })?;
+            {
+                let (iter, state) = state.render_params();
+                self.terminal.draw(|mut f| {
+                    let rect = f.size();
+                    let style = Style::default();
+                    let list = List::new(iter.map(Into::into))
+                        .highlight_style(style.modifier(Modifier::BOLD))
+                        .highlight_symbol("- ");
+                    f.render_stateful_widget(list, rect, state)
+                })?;
+            }
 
             let evt = match self.input.next() {
                 Some(evt) => evt,
                 None => continue,
             };
             match evt {
-                Event::Quit => {
-                    break;
-                }
-                Event::Down => {
-                    self.current_item = if current_item >= self.items.len() - 1 {
-                        0
-                    } else {
-                        current_item + 1
-                    }
-                }
-                Event::Up => {
-                    self.current_item = if current_item > 0 {
-                        current_item - 1
-                    } else {
-                        self.items.len() - 1
-                    }
-                }
-                Event::Enter => {
-                    result = Some(self.current_item);
-                    break;
-                }
+                Event::Quit => break None,
+                Event::Down => state.next(),
+                Event::Up => state.previous(),
+                Event::Enter => break Some(state.selected_index()),
                 _ => {}
             }
-        }
-
+        };
         Ok(result)
     }
 }

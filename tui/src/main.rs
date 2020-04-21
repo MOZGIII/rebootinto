@@ -16,6 +16,7 @@ mod error;
 mod event;
 mod input_backend;
 mod item;
+mod stateful_list;
 mod terminal_backend;
 mod ui;
 
