@@ -27,3 +27,8 @@ Package: rebootinto-iui
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: The IUI-based GUI tool for rebooting into other OS.
+
+Package: rebootinto-iced
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: The iced-based GUI tool for rebooting into other OS.
