@@ -9,7 +9,7 @@ matrix:
     - rust: nightly
   fast_finish: true
 
-dist: xenial
+dist: bionic
 addons:
   apt:
     packages:
