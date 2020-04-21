@@ -53,5 +53,7 @@ artifacts:
     name: rebootinto-tui.exe
   - path: target/release/rebootinto-iui.exe
     name: rebootinto-iui.exe
+  - path: target/release/rebootinto-iced.exe
+    name: rebootinto-iced.exe
   - path: target/wix/rebootinto-$(APPVEYOR_BUILD_VERSION)-x86_64.msi
     name: rebootinto-x86_64.msi
