@@ -101,6 +101,12 @@ jobs:
             env:
               CARGO_INCREMENTAL: "0"
             experimental: false
+          - name: Linux
+            os: ubuntu-latest
+            packaging-env-script: .github/scripts/packaging_env/linux.sh
+            packaging-script: .github/scripts/packaging/linux.sh
+            env: {}
+            experimental: false
 
       fail-fast: false
     env: ${{ matrix.platform.env }}
@@ -146,5 +152,5 @@ jobs:
       - name: Upload packaged artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: Windows Build
+          name: ${{ matrix.platform.name }} Build
           path: ${{ github.workspace }}/target/artifacts
