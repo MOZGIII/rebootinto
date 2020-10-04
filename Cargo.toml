@@ -5,4 +5,5 @@ members = [
   "tui",
   "iui",
   "iced",
+  "druid",
 ]
