@@ -30,7 +30,7 @@ version = "1.5"
 optional = true
 
 [dependencies.crossterm]
-version = "0.17"
+version = "0.20"
 optional = true
 
 [features]
