@@ -13,7 +13,6 @@ travis-ci = { repository = "MOZGIII/rebootinto" }
 appveyor = { repository = "MOZGIII/rebootinto" }
 
 [dependencies]
-efibootnext = "0.2"
-failure = "0.1"
+efibootnext = "0.3"
 simplereboot = "0.1"
 thiserror = "1"

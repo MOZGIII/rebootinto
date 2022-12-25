@@ -642,26 +642,27 @@ dependencies = [
 
 [[package]]
 name = "efibootnext"
-version = "0.2.1"
+version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "797de5d1252d418220b2c98366e0579b4f6e0d117903086e513630ea2419720b"
+checksum = "82ef0830652fdf44059ba49daecd89e8ed0af711ea5453bb01bd73bc9fc0d9d3"
 dependencies = [
- "byteorder",
  "efi-loadopt",
  "efivar",
  "failure",
- "failure_derive",
+ "thiserror",
 ]
 
 [[package]]
 name = "efivar"
-version = "0.1.0"
+version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2e71b8820d112c26921bd66676b10fd7dd79913dd8fc5140d2ceae0f9ab2d644"
+checksum = "8e2f50293cdf2780f652e287e797f4992b984004cf01da289ae868cff4c75e0b"
 dependencies = [
  "bitflags",
  "byteorder",
  "failure",
+ "lazy_static",
+ "uuid",
  "winapi 0.3.9",
 ]
 
@@ -2111,7 +2112,6 @@ name = "rebootinto-core"
 version = "0.1.2"
 dependencies = [
  "efibootnext",
- "failure",
  "simplereboot",
  "thiserror",
 ]
@@ -2772,6 +2772,15 @@ dependencies = [
  "form_urlencoded",
  "idna",
  "percent-encoding",
+]
+
+[[package]]
+name = "uuid"
+version = "0.8.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bc5cf98d8186244414c848017f0e2676b3fcb46807f6668a97dfe67359a3c4b7"
+dependencies = [
+ "serde",
 ]
 
 [[package]]

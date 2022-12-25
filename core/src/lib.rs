@@ -44,7 +44,7 @@ pub enum InitError {}
 pub enum LoadOptionError {
     /// Something went wrong while getting the load option.
     #[error("load option error: {0}")]
-    Efibootnext(efibootnext::Error),
+    Efibootnext(efibootnext::error::GetLoadOptionError),
 }
 
 /// An error that can occur at the `reboot_into` call.
@@ -52,7 +52,7 @@ pub enum LoadOptionError {
 pub enum RebootIntoError {
     /// Something went wrong when setting the `BootNext` EFI variable.
     #[error("set BootNext error: {0}")]
-    SetBootNext(efibootnext::Error),
+    SetBootNext(efibootnext::error::SetBootNextError),
     /// Something went wrong during the reboot.
     #[error("reboot error: {0}")]
     Reboot(std::io::Error),
