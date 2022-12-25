@@ -13,12 +13,9 @@ travis-ci = { repository = "MOZGIII/rebootinto" }
 appveyor = { repository = "MOZGIII/rebootinto" }
 
 [dependencies]
-failure = "0.1"
-failure_derive = "0.1"
+rebootinto-core = { path = "../core" }
 
-[dependencies.rebootinto-core]
-version = "0.1"
-path = "../core"
+anyhow = "1"
 
 [dependencies.tui]
 version = "0.9"

@@ -1,7 +1,10 @@
+//! The [`crossterm`] input backend implementation.
+
 use super::InputBackend;
 use crate::event::Event;
 use crossterm::event::{read, Event as CrosstermEvent, KeyCode, KeyEvent};
 
+/// The [`crossterm`] input backend.
 pub struct CrosstermInputBackend;
 
 impl Iterator for CrosstermInputBackend {
@@ -42,6 +45,7 @@ impl Iterator for CrosstermInputBackend {
 
 impl InputBackend for CrosstermInputBackend {}
 
+/// Create a [`CrosstermInputBackend`].
 pub fn create_input_backend() -> CrosstermInputBackend {
     CrosstermInputBackend
 }

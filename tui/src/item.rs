@@ -1,16 +1,14 @@
+//! The UI item implementation.
+
 use crate::core;
 
 use tui::widgets::Text;
 
+/// The UI item.
 #[derive(Debug)]
 pub struct Item {
-    load_option: core::LoadOption,
-}
-
-impl Item {
-    pub fn into_inner(self) -> core::LoadOption {
-        self.load_option
-    }
+    /// The load option.
+    pub load_option: core::LoadOption,
 }
 
 impl AsRef<str> for Item {
@@ -19,14 +17,8 @@ impl AsRef<str> for Item {
     }
 }
 
-impl<'a> Into<Text<'a>> for &'a Item {
-    fn into(self) -> Text<'a> {
-        Text::raw(self.as_ref())
-    }
-}
-
-impl From<core::LoadOption> for Item {
-    fn from(load_option: core::LoadOption) -> Self {
-        Self { load_option }
+impl<'a> From<&'a Item> for Text<'a> {
+    fn from(value: &'a Item) -> Self {
+        Text::raw(value.as_ref())
     }
 }

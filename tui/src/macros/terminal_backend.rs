@@ -1,3 +1,6 @@
+//! The terminal backend utility macros.
+
+/// Delegate the implementation of the [`tui`] backend.
 #[macro_export]
 macro_rules! delegate_backend_impl {
     ($impl_for:ty, $this:ident => $to:expr) => {

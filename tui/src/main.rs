@@ -1,9 +1,5 @@
 //! A tui-based CLI app for rebootinto.
 
-#[macro_use]
-extern crate failure_derive;
-
-use failure::Error;
 use rebootinto_core as core;
 
 use tui::Terminal;
@@ -11,7 +7,6 @@ use tui::Terminal;
 #[macro_use]
 mod macros;
 
-mod error;
 mod event;
 mod input_backend;
 mod item;
@@ -19,12 +14,9 @@ mod stateful_list;
 mod terminal_backend;
 mod ui;
 
-use error::NoLoadOptions;
 use item::Item;
 use terminal_backend::Backend;
 use ui::BootNextSelectorUI;
-
-type Result<T> = std::result::Result<T, Error>;
 
 fn main() {
     if let Err(err) = run() {
@@ -38,14 +30,15 @@ fn main() {
     }
 }
 
-fn run() -> Result<()> {
+/// Run the app and return the error.
+fn run() -> Result<(), anyhow::Error> {
     let mut backend = core::Backend::init()?;
     let load_options = backend
         .load_options()
-        .collect::<Result<Vec<core::LoadOption>>>()?;
+        .collect::<Result<Vec<core::LoadOption>, core::LoadOptionError>>()?;
 
     if load_options.is_empty() {
-        return Err(NoLoadOptions.into());
+        anyhow::bail!("no load options");
     }
 
     let reboot_into = {
@@ -55,14 +48,17 @@ fn run() -> Result<()> {
 
         let mut input = input_backend::create_input_backend();
 
-        let mut items: Vec<Item> = load_options.into_iter().map(Item::from).collect();
+        let mut items: Vec<Item> = load_options
+            .into_iter()
+            .map(|load_option| Item { load_option })
+            .collect();
         let mut ui = BootNextSelectorUI::new(&mut terminal, &mut input, &items, 0);
 
         let selected_item_idx = ui.run()?;
         terminal.show_cursor()?;
         drop(terminal);
 
-        selected_item_idx.map(|e| items.swap_remove(e).into_inner())
+        selected_item_idx.map(|e| items.swap_remove(e).load_option)
     };
 
     if let Some(reboot_into) = reboot_into {
