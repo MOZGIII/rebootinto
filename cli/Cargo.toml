@@ -2,7 +2,7 @@
 name = "rebootinto-cli"
 version = "0.1.0"
 authors = ["MOZGIII <mike-n@narod.ru>"]
-edition = "2018"
+edition = "2021"
 description = "The command line tool for rebooting into other OS."
 license = "MIT"
 repository = "https://github.com/MOZGIII/rebootinto"

@@ -2,7 +2,7 @@
 name = "rebootinto-core"
 version = "0.1.2"
 authors = ["MOZGIII <mike-n@narod.ru>"]
-edition = "2018"
+edition = "2021"
 description = "The core API for rebooting into other OS."
 license = "MIT"
 repository = "https://github.com/MOZGIII/rebootinto"
