@@ -1,36 +1,59 @@
-#![warn(rust_2018_idioms)]
-#![warn(clippy::all)]
+//! The core implementation of the rebootinto.
 
-use efibootnext::Adapter;
 pub use efibootnext::LoadOption;
-pub use failure::Error;
 
-mod error;
-
-pub type Result<T> = std::result::Result<T, Error>;
-
+/// The backend providing the rebootinto flow.
 pub struct Backend {
-    adapter: Adapter,
+    /// The cross-platform adapter to interact with the boot options of the EFI firmware.
+    adapter: efibootnext::Adapter,
 }
 
 impl Backend {
-    pub fn init() -> Result<Self> {
+    /// Run all the necessary initialization and prepare a new [`Self`].
+    pub fn init() -> Result<Self, InitError> {
         Ok(Self {
-            adapter: Adapter::default(),
+            adapter: efibootnext::Adapter::default(),
         })
     }
 
-    pub fn load_options(&mut self) -> impl Iterator<Item = Result<LoadOption>> + '_ {
-        self.adapter.load_options()
+    /// Provide an iterator over the available load options.
+    pub fn load_options(
+        &mut self,
+    ) -> impl Iterator<Item = Result<LoadOption, LoadOptionError>> + '_ {
+        self.adapter
+            .load_options()
+            .map(|result| result.map_err(LoadOptionError::Efibootnext))
     }
 
-    pub fn reboot_into(&mut self, num: u16) -> Result<()> {
+    /// Perform the reboot operation into the given load option.
+    pub fn reboot_into(&mut self, num: u16) -> Result<(), RebootIntoError> {
         self.adapter
             .set_boot_next(num)
-            .map_err(error::RebootIntoErrorKind::SetBootNextError)?;
-        simplereboot::reboot()
-            .map_err(Error::from)
-            .map_err(error::RebootIntoErrorKind::RebootError)?;
+            .map_err(RebootIntoError::SetBootNext)?;
+        simplereboot::reboot().map_err(RebootIntoError::Reboot)?;
         Ok(())
     }
+}
+
+/// An error that can occur during the initialization.
+#[derive(Debug, thiserror::Error)]
+pub enum InitError {}
+
+/// An error that can occur at the `load_options` call.
+#[derive(Debug, thiserror::Error)]
+pub enum LoadOptionError {
+    /// Something went wrong while getting the load option.
+    #[error("load option error: {0}")]
+    Efibootnext(efibootnext::Error),
+}
+
+/// An error that can occur at the `reboot_into` call.
+#[derive(Debug, thiserror::Error)]
+pub enum RebootIntoError {
+    /// Something went wrong when setting the `BootNext` EFI variable.
+    #[error("set BootNext error: {0}")]
+    SetBootNext(efibootnext::Error),
+    /// Something went wrong during the reboot.
+    #[error("reboot error: {0}")]
+    Reboot(std::io::Error),
 }
