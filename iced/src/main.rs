@@ -1,17 +1,14 @@
-#![warn(rust_2018_idioms)]
-#![warn(clippy::all)]
+//! An iced-based GUI app for rebootinto.
+
 #![windows_subsystem = "windows"]
 
 use std::convert::TryInto;
 
-use failure::Error;
 use rebootinto_core as core;
 
 use iced::{window, Application, Settings};
 
 mod app;
-
-type Result<T> = std::result::Result<T, Error>;
 
 fn main() {
     if let Err(err) = run() {
@@ -25,6 +22,8 @@ fn main() {
     }
 }
 
+/// Compute an estimate of the height of the window to accomodate the contents
+/// based on the amount of items, taking the padding and spacing into account.
 fn estimate_window_height(items: usize) -> u32 {
     let padding = (app::LAYOUT_PADDING as u32) * 2;
 
@@ -42,11 +41,12 @@ fn estimate_window_height(items: usize) -> u32 {
     padding + spacing + content
 }
 
-fn run() -> Result<()> {
+/// Run the app and return the error.
+fn run() -> Result<(), anyhow::Error> {
     let mut backend = core::Backend::init()?;
     let load_options = backend
         .load_options()
-        .collect::<Result<Vec<core::LoadOption>>>()?;
+        .collect::<Result<Vec<core::LoadOption>, core::LoadOptionError>>()?;
 
     let size = (350, estimate_window_height(load_options.len()));
 
