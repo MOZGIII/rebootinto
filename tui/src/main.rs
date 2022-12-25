@@ -1,5 +1,4 @@
-#![warn(rust_2018_idioms)]
-#![warn(clippy::all)]
+//! A tui-based CLI app for rebootinto.
 
 #[macro_use]
 extern crate failure_derive;

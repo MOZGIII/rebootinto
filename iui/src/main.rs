@@ -1,8 +1,7 @@
-#![warn(rust_2018_idioms)]
-#![warn(clippy::all)]
+//! An iui-based GUI app for rebootinto.
+
 #![windows_subsystem = "windows"]
 
-use failure::Error;
 use rebootinto_core as core;
 
 use iui::controls::{Button, Label, VerticalBox};
@@ -10,8 +9,6 @@ use iui::prelude::*;
 
 use std::cell::RefCell;
 use std::rc::Rc;
-
-type Result<T> = std::result::Result<T, Error>;
 
 fn main() {
     if let Err(err) = run() {
@@ -25,11 +22,12 @@ fn main() {
     }
 }
 
-fn run() -> Result<()> {
+/// Run the app and return the error.
+fn run() -> Result<(), anyhow::Error> {
     let mut backend = core::Backend::init()?;
     let load_options = backend
         .load_options()
-        .collect::<Result<Vec<core::LoadOption>>>()?;
+        .collect::<Result<Vec<core::LoadOption>, core::LoadOptionError>>()?;
 
     let backend = Rc::new(RefCell::new(backend));
 
