@@ -31,7 +31,7 @@ fn run() -> Result<(), anyhow::Error> {
 
     let backend = Rc::new(RefCell::new(backend));
 
-    let ui = UI::init()?;
+    let ui = UI::init().map_err(|err| anyhow::format_err!("UI init error: {err}"))?;
 
     let mut win = Window::new(&ui, "Reboot Into", 200, 200, WindowType::NoMenubar);
 
