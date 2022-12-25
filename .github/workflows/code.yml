@@ -21,9 +21,6 @@ jobs:
         rust-toolchain:
           - name: stable
             allow-fail: false
-          - name: beta
-            allow-fail: false
-            packaging: skip
           - name: nightly
             allow-fail: true
             packaging: skip
