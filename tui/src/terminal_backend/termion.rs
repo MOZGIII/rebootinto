@@ -1,3 +1,5 @@
+//! The terminal backend implementation via [`termion`].
+
 use crate::Result;
 
 use std::io;
@@ -7,7 +9,9 @@ use termion::raw::{IntoRawMode, RawTerminal};
 use termion::screen::AlternateScreen;
 use tui::backend::TermionBackend;
 
+/// The [`termion`] backend.
 pub struct Termion {
+    /// The underlying implementation handle.
     inner: TermionBackend<AlternateScreen<MouseTerminal<RawTerminal<io::Stdout>>>>,
 }
 

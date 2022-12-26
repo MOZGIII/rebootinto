@@ -1,3 +1,5 @@
+//! The terminal backend.
+
 #[cfg(feature = "crossterm_backend")]
 mod crossterm;
 #[cfg(feature = "crossterm_backend")]
@@ -8,10 +10,10 @@ mod termion;
 #[cfg(feature = "termion_backend")]
 pub use self::termion::Termion as Impl;
 
-use super::Result;
-
+/// The backend.
 pub trait Backend: tui::backend::Backend {
-    fn new() -> Result<Self>
+    /// Constrct and initializer a new backend.
+    fn new() -> Result<Self, anyhow::Error>
     where
         Self: Sized;
 }

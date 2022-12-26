@@ -1,6 +1,9 @@
+//! The input backend implementations.
+
 pub use crate::event::Event;
 use std::iter::Iterator;
 
+/// Input backend for the terminal.
 pub trait InputBackend: Iterator<Item = Event> {}
 
 #[cfg(feature = "crossterm_backend")]
