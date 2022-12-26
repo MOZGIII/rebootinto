@@ -27,9 +27,6 @@ jobs:
         rust-toolchain:
           - name: stable
             allow-fail: false
-          - name: nightly
-            allow-fail: true
-            packaging: skip
 
         platform:
           - name: Linux
@@ -43,11 +40,6 @@ jobs:
             env:
               CARGO_INCREMENTAL: "0"
             experimental: false
-          - name: macOS
-            os: macos-latest
-            build-env-script: .github/scripts/build_env/macos.sh
-            env: {}
-            experimental: true
 
         mode:
           - name: clippy
