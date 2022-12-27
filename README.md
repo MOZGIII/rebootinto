@@ -29,8 +29,6 @@ Find a commit that has a CI build associated and grab stuff from there.
 As with Github Releases, not everything is currently built there, so if you
 didn't find what you were looking for - try other installation methods.
 
-- [Travis CI](https://travis-ci.org/MOZGIII/rebootinto)
-- [AppVeyor](https://ci.appveyor.com/project/MOZGIII/rebootinto)
 - [Github Actions](https://github.com/MOZGIII/rebootinto/actions)
 
 ### Source installation
