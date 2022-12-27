@@ -1,96 +1,85 @@
-<?xml version='1.0' encoding='windows-1252'?>
-<?if $(var.Platform) = x64 ?>
-<?define Win64 = "yes" ?>
-<?define PlatformProgramFilesFolder = "ProgramFiles64Folder" ?>
-<?else ?>
-<?define Win64 = "no" ?>
-<?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
-<?endif ?>
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+  <Package Name="rebootinto" UpgradeCode="67656028-ABC0-47DD-90CE-124FBA51727A" Manufacturer="MOZGIII" Language="1033" Codepage="1252" Version="0.0.1" InstallerVersion="450">
+    <SummaryInformation Keywords="Installer" Manufacturer="MOZGIII" />
 
-<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
-  <Product Id='*' Name='rebootinto' UpgradeCode='67656028-ABC0-47DD-90CE-124FBA51727A' Manufacturer='MOZGIII' Language='1033' Codepage='1252' Version='$(var.Version)'>
-    <Package Id='*' Keywords='Installer' Manufacturer='MOZGIII' InstallerVersion='450' Languages='1033' Compressed='yes' InstallScope='perMachine' SummaryCodepage='1252' Platform='$(var.Platform)'/>
+    <MajorUpgrade Schedule="afterInstallInitialize" DowngradeErrorMessage="A newer version of [ProductName] is already installed. Setup will now exit." />
 
-    <MajorUpgrade Schedule='afterInstallInitialize' DowngradeErrorMessage='A newer version of [ProductName] is already installed. Setup will now exit.'/>
+    <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" DiskPrompt="CD-ROM #1" />
+    <Property Id="DiskPrompt" Value="rebootinto installation" />
 
-    <Media Id='1' Cabinet='media1.cab' EmbedCab='yes' DiskPrompt='CD-ROM #1'/>
-    <Property Id='DiskPrompt' Value='rebootinto installation'/>
+    <Feature Id="feature_rebootinto_cli" Title="Command Line Interface (CLI)" Description="Installs command line executable." Level="1" ConfigurableDirectory="APPLICATIONFOLDER" AllowAdvertise="no" Display="expand" AllowAbsent="no">
+      <ComponentRef Id="rebootinto_cli_binary" />
+    </Feature>
+    <Feature Id="feature_rebootinto_tui" Title="Terminal Interface (TUI)" Description="Installs the tui-based Terminal UI executable." Level="1" ConfigurableDirectory="APPLICATIONFOLDER" AllowAdvertise="no" Display="expand" AllowAbsent="no">
+      <ComponentRef Id="rebootinto_tui_binary" />
+      <Feature Id="feature_start_menu_shortcut_tui" Title="Start Menu Shortcuts" Description="Add start menu shortcuts for tui-based TUI." Level="1">
+        <ComponentRef Id="rebootinto_tui_shortcut" />
+      </Feature>
+    </Feature>
+    <Feature Id="feature_rebootinto_iui" Title="Graphical Interface (IUI)" Description="Installs the iui-based Graphical UI executable." Level="1" ConfigurableDirectory="APPLICATIONFOLDER" AllowAdvertise="no" Display="expand" AllowAbsent="no">
+      <ComponentRef Id="rebootinto_iui_binary" />
+      <Feature Id="feature_start_menu_shortcut_iui" Title="Start Menu Shortcuts" Description="Add start menu shortcuts for iui-based GUI." Level="1">
+        <ComponentRef Id="rebootinto_iui_shortcut" />
+      </Feature>
+    </Feature>
+    <Feature Id="feature_rebootinto_iced" Title="Graphical Interface (iced)" Description="Installs the iced-based Graphical UI executable." Level="1" ConfigurableDirectory="APPLICATIONFOLDER" AllowAdvertise="no" Display="expand" AllowAbsent="no">
+      <ComponentRef Id="rebootinto_iced_binary" />
+      <Feature Id="feature_start_menu_shortcut_iced" Title="Start Menu Shortcuts" Description="Add start menu shortcuts for iced-based GUI." Level="1">
+        <ComponentRef Id="rebootinto_iced_shortcut" />
+      </Feature>
+    </Feature>
+    <Feature Id="feature_env_path" Title="PATH Environment Variable" Description="Add the install location of the [ProductName] executables to the PATH system environment variable. This allows the [ProductName] executables to be called from any location." Level="1">
+      <ComponentRef Id="path" />
+    </Feature>
 
-    <Directory Id='TARGETDIR' Name='SourceDir'>
-      <Directory Id='$(var.PlatformProgramFilesFolder)' Name='PFiles'>
-        <Directory Id='APPLICATIONFOLDER' Name='rebootinto'>
-          <Directory Id='Bin' Name='bin'>
+    <SetProperty Id="ARPINSTALLLOCATION" Value="[APPLICATIONFOLDER]" After="CostFinalize" />
+    <UI>
+      <ui:WixUI Id="WixUI_FeatureTree" />
+      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="CustomizeDlg" Order="2" />
+      <Publish Dialog="CustomizeDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2" />
+    </UI>
 
-            <Component Id='path' Guid='2F032BA2-8192-41DD-B66C-61E4046A1750' Win64='$(var.Win64)' KeyPath='yes'>
-              <Environment Id='PATH' Name='PATH' Value='[Bin]' Permanent='no' Part='last' Action='set' System='yes'/>
-            </Component>
+    <StandardDirectory Id="ProgramFilesFolder">
+      <Directory Id="APPLICATIONFOLDER" Name="rebootinto">
+        <Directory Id="Bin" Name="bin" FileSource="target\release">
 
-            <Component Id='rebootinto_cli_binary' Guid='*' Win64='$(var.Win64)'>
-              <File Id='rebootinto_cli_exe' Name='rebootinto-cli.exe' DiskId='1' Source='target\release\rebootinto-cli.exe' KeyPath='yes'/>
-            </Component>
+          <Component Id="path" Guid="2F032BA2-8192-41DD-B66C-61E4046A1750" KeyPath="yes" Bitness="always64">
+            <Environment Id="PATH" Name="PATH" Value="[Bin]" Permanent="no" Part="last" Action="set" System="yes" />
+          </Component>
 
-            <Component Id='rebootinto_tui_binary' Guid='*' Win64='$(var.Win64)'>
-              <File Id='rebootinto_tui_exe' Name='rebootinto-tui.exe' DiskId='1' Source='target\release\rebootinto-tui.exe' KeyPath='yes'/>
-            </Component>
+          <Component Id="rebootinto_cli_binary" Bitness="always64">
+            <File Id="rebootinto_cli_exe" Name="rebootinto-cli.exe" DiskId="1" KeyPath="yes" />
+          </Component>
 
-            <Component Id='rebootinto_iui_binary' Guid='*' Win64='$(var.Win64)'>
-              <File Id='rebootinto_iui_exe' Name='rebootinto-iui.exe' DiskId='1' Source='target\release\rebootinto-iui.exe' KeyPath='yes'/>
-            </Component>
+          <Component Id="rebootinto_tui_binary" Bitness="always64">
+            <File Id="rebootinto_tui_exe" Name="rebootinto-tui.exe" DiskId="1" KeyPath="yes" />
+          </Component>
 
-            <Component Id='rebootinto_iced_binary' Guid='*' Win64='$(var.Win64)'>
-              <File Id='rebootinto_iced_exe' Name='rebootinto-iced.exe' DiskId='1' Source='target\release\rebootinto-iced.exe' KeyPath='yes'/>
-            </Component>
+          <Component Id="rebootinto_iui_binary" Bitness="always64">
+            <File Id="rebootinto_iui_exe" Name="rebootinto-iui.exe" DiskId="1" KeyPath="yes" />
+          </Component>
 
-          </Directory>
+          <Component Id="rebootinto_iced_binary" Bitness="always64">
+            <File Id="rebootinto_iced_exe" Name="rebootinto-iced.exe" DiskId="1" KeyPath="yes" />
+          </Component>
+
         </Directory>
       </Directory>
+    </StandardDirectory>
 
-      <Directory Id="ProgramMenuFolder">
-        <Component Id='rebootinto_tui_shortcut' Guid='*'>
-          <Shortcut Id="rebootinto_tui_exe_shortcut" Name="Rebootinto (TUI)" Description="Reboot into other OS (Terminal UI)" Target="[!rebootinto_tui_exe]" WorkingDirectory="Bin"/>
-          <RegistryValue Root="HKCU" Key="Software\MOZGIII\RebootintoInstaller" Name="rebootinto_tui_shortcut" Type="integer" Value="1" KeyPath="yes" />
-        </Component>
-        <Component Id='rebootinto_iui_shortcut' Guid='*'>
-          <Shortcut Id="rebootinto_iui_exe_shortcut" Name="Rebootinto (IUI)" Description="Reboot into other OS (IUI-based Graphical UI)" Target="[!rebootinto_iui_exe]" WorkingDirectory="Bin"/>
-          <RegistryValue Root="HKCU" Key="Software\MOZGIII\RebootintoInstaller" Name="rebootinto_iui_shortcut" Type="integer" Value="1" KeyPath="yes" />
-        </Component>
-        <Component Id='rebootinto_iced_shortcut' Guid='*'>
-          <Shortcut Id="rebootinto_iced_exe_shortcut" Name="Rebootinto (iced)" Description="Reboot into other OS (iced-based Graphical UI)" Target="[!rebootinto_iced_exe]" WorkingDirectory="Bin"/>
-          <RegistryValue Root="HKCU" Key="Software\MOZGIII\RebootintoInstaller" Name="rebootinto_iced_shortcut" Type="integer" Value="1" KeyPath="yes" />
-        </Component>
-      </Directory>
-    </Directory>
-
-    <Feature Id='feature_rebootinto_cli' Title='Command Line Interface (CLI)' Description='Installs command line executable.' Level='1' ConfigurableDirectory='APPLICATIONFOLDER' AllowAdvertise='no' Display='expand' Absent='disallow'>
-      <ComponentRef Id='rebootinto_cli_binary'/>
-    </Feature>
-    <Feature Id='feature_rebootinto_tui' Title='Terminal Interface (TUI)' Description='Installs the tui-based Terminal UI executable.' Level='1' ConfigurableDirectory='APPLICATIONFOLDER' AllowAdvertise='no' Display='expand' Absent='disallow'>
-      <ComponentRef Id='rebootinto_tui_binary'/>
-      <Feature Id='feature_start_menu_shortcut_tui' Title='Start Menu Shortcuts' Description='Add start menu shortcuts for tui-based TUI.' Level='1' Absent='allow'>
-        <ComponentRef Id='rebootinto_tui_shortcut'/>
-      </Feature>
-    </Feature>
-    <Feature Id='feature_rebootinto_iui' Title='Graphical Interface (IUI)' Description='Installs the iui-based Graphical UI executable.' Level='1' ConfigurableDirectory='APPLICATIONFOLDER' AllowAdvertise='no' Display='expand' Absent='disallow'>
-      <ComponentRef Id='rebootinto_iui_binary'/>
-      <Feature Id='feature_start_menu_shortcut_iui' Title='Start Menu Shortcuts' Description='Add start menu shortcuts for iui-based GUI.' Level='1' Absent='allow'>
-        <ComponentRef Id='rebootinto_iui_shortcut'/>
-      </Feature>
-    </Feature>
-    <Feature Id='feature_rebootinto_iced' Title='Graphical Interface (iced)' Description='Installs the iced-based Graphical UI executable.' Level='1' ConfigurableDirectory='APPLICATIONFOLDER' AllowAdvertise='no' Display='expand' Absent='disallow'>
-      <ComponentRef Id='rebootinto_iced_binary'/>
-      <Feature Id='feature_start_menu_shortcut_iced' Title='Start Menu Shortcuts' Description='Add start menu shortcuts for iced-based GUI.' Level='1' Absent='allow'>
-        <ComponentRef Id='rebootinto_iced_shortcut'/>
-      </Feature>
-    </Feature>
-    <Feature Id='feature_env_path' Title='PATH Environment Variable' Description='Add the install location of the [ProductName] executables to the PATH system environment variable. This allows the [ProductName] executables to be called from any location.' Level='1' Absent='allow'>
-      <ComponentRef Id='path'/>
-    </Feature>
-
-    <SetProperty Id='ARPINSTALLLOCATION' Value='[APPLICATIONFOLDER]' After='CostFinalize'/>
-    <UI>
-      <UIRef Id='WixUI_FeatureTree'/>
-      <Publish Dialog='WelcomeDlg' Control='Next' Event='NewDialog' Value='CustomizeDlg' Order='2'>1</Publish>
-      <Publish Dialog='CustomizeDlg' Control='Back' Event='NewDialog' Value='WelcomeDlg' Order='2'>1</Publish>
-    </UI>
-  </Product>
+    <StandardDirectory Id="ProgramMenuFolder">
+      <Component Id="rebootinto_tui_shortcut">
+        <Shortcut Id="rebootinto_tui_exe_shortcut" Name="Rebootinto (TUI)" Description="Reboot into other OS (Terminal UI)" Target="[!rebootinto_tui_exe]" WorkingDirectory="Bin" />
+        <RegistryValue Root="HKCU" Key="Software\MOZGIII\RebootintoInstaller" Name="rebootinto_tui_shortcut" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+      <Component Id="rebootinto_iui_shortcut">
+        <Shortcut Id="rebootinto_iui_exe_shortcut" Name="Rebootinto (IUI)" Description="Reboot into other OS (IUI-based Graphical UI)" Target="[!rebootinto_iui_exe]" WorkingDirectory="Bin" />
+        <RegistryValue Root="HKCU" Key="Software\MOZGIII\RebootintoInstaller" Name="rebootinto_iui_shortcut" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+      <Component Id="rebootinto_iced_shortcut">
+        <Shortcut Id="rebootinto_iced_exe_shortcut" Name="Rebootinto (iced)" Description="Reboot into other OS (iced-based Graphical UI)" Target="[!rebootinto_iced_exe]" WorkingDirectory="Bin" />
+        <RegistryValue Root="HKCU" Key="Software\MOZGIII\RebootintoInstaller" Name="rebootinto_iced_shortcut" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+    </StandardDirectory>
+  </Package>
 </Wix>
