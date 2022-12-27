@@ -39,7 +39,7 @@
       <Publish Dialog="CustomizeDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2" />
     </UI>
 
-    <StandardDirectory Id="ProgramFiles64Folder">
+    <StandardDirectory Id="ProgramFilesFolder">
       <Directory Id="APPLICATIONFOLDER" Name="rebootinto">
         <Directory Id="Bin" Name="bin" FileSource="target\release">
 
