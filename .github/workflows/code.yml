@@ -150,7 +150,7 @@ jobs:
         run: ${{ matrix.platform.packaging-script }} "${{ github.workspace }}/target/artifacts"
 
       - name: Upload packaged artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.platform.name }} Build
           path: ${{ github.workspace }}/target/artifacts
