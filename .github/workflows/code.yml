@@ -2,9 +2,15 @@ name: code
 
 on:
   push:
+    branches:
+      - master
   pull_request:
   schedule:
     - cron:  '0 20 * * 0'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
 
 defaults:
   run:
@@ -21,12 +27,6 @@ jobs:
         rust-toolchain:
           - name: stable
             allow-fail: false
-          - name: beta
-            allow-fail: false
-            packaging: skip
-          - name: nightly
-            allow-fail: true
-            packaging: skip
 
         platform:
           - name: Linux
@@ -40,11 +40,6 @@ jobs:
             env:
               CARGO_INCREMENTAL: "0"
             experimental: false
-          - name: macOS
-            os: macos-latest
-            build-env-script: .github/scripts/build_env/macos.sh
-            env: {}
-            experimental: true
 
         mode:
           - name: clippy
@@ -106,6 +101,12 @@ jobs:
             env:
               CARGO_INCREMENTAL: "0"
             experimental: false
+          - name: Linux
+            os: ubuntu-latest
+            packaging-env-script: .github/scripts/packaging_env/linux.sh
+            packaging-script: .github/scripts/packaging/linux.sh
+            env: {}
+            experimental: false
 
       fail-fast: false
     env: ${{ matrix.platform.env }}
@@ -151,5 +152,5 @@ jobs:
       - name: Upload packaged artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: Windows Build
+          name: ${{ matrix.platform.name }} Build
           path: ${{ github.workspace }}/target/artifacts

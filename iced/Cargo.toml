@@ -2,7 +2,7 @@
 name = "rebootinto-iced"
 version = "0.1.0"
 authors = ["MOZGIII <mike-n@narod.ru>"]
-edition = "2018"
+edition = "2021"
 description = "The iced-based GUI tool for rebooting into other OS."
 license = "MIT"
 repository = "https://github.com/MOZGIII/rebootinto"
@@ -14,12 +14,10 @@ travis-ci = { repository = "MOZGIII/rebootinto" }
 appveyor = { repository = "MOZGIII/rebootinto" }
 
 [dependencies]
-failure = "0.1"
-iced = "0.1"
+rebootinto-core = { path = "../core" }
 
-[dependencies.rebootinto-core]
-version = "0.1"
-path = "../core"
+anyhow = "1"
+iced = "0.1"
 
 [build-dependencies]
 embed-resource = "1"

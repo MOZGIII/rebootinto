@@ -3,10 +3,11 @@ set -euo pipefail
 
 ARTIFACTS_DIR="$1"
 
-cargo wix \
-  --nocapture \
-  --name rebootinto \
-  --install-version "0.0.1"
+set -x
+
+wix build wix/main.wxs \
+  -ext WixToolset.UI.wixext \
+  -o target/wix/rebootinto.msi
 
 mkdir -p "$ARTIFACTS_DIR"
 

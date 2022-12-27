@@ -1,9 +1,12 @@
+//! The [`termion`] input backend implementation.
+
 use super::InputBackend;
 use crate::event::Event;
 use std::io;
 use termion::event::{Event as TermionEvent, Key};
 use termion::input::{Events, TermRead};
 
+/// The [`termion`] input backend.
 pub struct TermionInputBackend {
     iter: Events<io::Stdin>,
 }
@@ -29,6 +32,7 @@ impl Iterator for TermionInputBackend {
     }
 }
 
+/// Create a [`TermionInputBackend`].
 pub fn create_input_backend() -> TermionInputBackend {
     TermionInputBackend {
         iter: io::stdin().events(),

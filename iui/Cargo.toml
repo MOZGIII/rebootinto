@@ -2,7 +2,7 @@
 name = "rebootinto-iui"
 version = "0.1.0"
 authors = ["MOZGIII <mike-n@narod.ru>"]
-edition = "2018"
+edition = "2021"
 description = "The IUI-based GUI tool for rebooting into other OS."
 license = "MIT"
 repository = "https://github.com/MOZGIII/rebootinto"
@@ -14,16 +14,14 @@ travis-ci = { repository = "MOZGIII/rebootinto" }
 appveyor = { repository = "MOZGIII/rebootinto" }
 
 [dependencies]
-failure = "0.1"
+rebootinto-core = { path = "../core" }
+
+anyhow = "1"
 
 [dependencies.iui]
 git = "https://github.com/MOZGIII/libui-rs.git"
 rev = "5d526e4d8d817a0736f60835259070ffa58b8b42"
 features = ["static"]
-
-[dependencies.rebootinto-core]
-version = "0.1"
-path = "../core"
 
 [build-dependencies]
 embed-resource = "1"

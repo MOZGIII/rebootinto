@@ -1,3 +1,5 @@
+//! The iced app.
+
 use iced::{
     button, executor, scrollable, Application, Button, Command, Container, Element, Length,
     Scrollable, Text,
@@ -5,35 +7,60 @@ use iced::{
 
 use super::core;
 
+/// Initialization params.
 pub struct Init {
+    /// The core backend.
     pub backend: core::Backend,
+    /// The load options.
     pub load_options: Vec<core::LoadOption>,
 }
 
+/// The button data.
 struct ButtonData {
+    /// The load option of the button.
     load_option: core::LoadOption,
+    /// The button state.
     state: button::State,
 }
 
+/// The app.
 pub struct App {
+    /// The core backend.
     backend: core::Backend,
+    /// The scroll state.
     scroll: scrollable::State,
+    /// The buttons.
     buttons: Vec<ButtonData>,
+    /// The app state.
     state: State,
 }
 
+/// The possible states of the app.
 enum State {
+    /// User is choosing the input.
     Choosing,
-    Rebooting { index: usize },
-    Error { error: super::Error },
+    /// Reboot is in progress.
+    Rebooting {
+        /// The index of the load option.
+        index: usize,
+    },
+    /// An error has occured.
+    Error {
+        /// The error that occured.
+        error: core::RebootIntoError,
+    },
 }
 
+/// The application control messages.
 #[derive(Debug, Clone, Copy)]
 pub enum Message {
+    /// The button is pressed.
     ButtonPressed(usize),
 }
 
+/// The standard layout padding.
 pub const LAYOUT_PADDING: u16 = 10;
+/// The standard layout spacing.
 pub const LAYOUT_SPACING: u16 = 10;
 
 impl Application for App {
@@ -113,6 +140,7 @@ impl Application for App {
     }
 }
 
+/// Render text with the standard padding.
 fn text_view<'a>(label: impl Into<String>) -> Element<'a, Message> {
     let text = Text::new(label).width(Length::Fill).height(Length::Fill);
     Container::new(text)

@@ -2,7 +2,7 @@
 name = "rebootinto-core"
 version = "0.1.2"
 authors = ["MOZGIII <mike-n@narod.ru>"]
-edition = "2018"
+edition = "2021"
 description = "The core API for rebooting into other OS."
 license = "MIT"
 repository = "https://github.com/MOZGIII/rebootinto"
@@ -13,7 +13,6 @@ travis-ci = { repository = "MOZGIII/rebootinto" }
 appveyor = { repository = "MOZGIII/rebootinto" }
 
 [dependencies]
-failure = "0.1"
-failure_derive = "0.1"
+efibootnext = "0.3"
 simplereboot = "0.1"
-efibootnext = "0.2"
+thiserror = "1"

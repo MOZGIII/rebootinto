@@ -1,3 +1,5 @@
+//! The UI implementation.
+
 use crate::event::Event;
 use crate::input_backend::InputBackend;
 use tui::style::{Modifier, Style};
@@ -6,15 +8,19 @@ use tui::Terminal;
 
 use crate::item::Item;
 use crate::stateful_list::StatefulList;
-use crate::Result;
 
+/// The UI for selecting the boot option to use as [`BootNext`].
 pub struct BootNextSelectorUI<'a, B: tui::backend::Backend> {
+    /// The terminal backend.
     terminal: &'a mut Terminal<B>,
+    /// The input backend.
     input: &'a mut dyn InputBackend,
+    /// The UI state.
     state: StatefulList<'a, Item>,
 }
 
 impl<'a, B: tui::backend::Backend> BootNextSelectorUI<'a, B> {
+    /// Construct a new [`Self`].
     pub fn new(
         terminal: &'a mut Terminal<B>,
         input: &'a mut dyn InputBackend,
@@ -29,7 +35,8 @@ impl<'a, B: tui::backend::Backend> BootNextSelectorUI<'a, B> {
         }
     }
 
-    pub fn run(&mut self) -> Result<Option<usize>> {
+    /// Execute the UI and return the selected load option index (if any).
+    pub fn run(&mut self) -> Result<Option<usize>, anyhow::Error> {
         let result = loop {
             let state = &mut self.state;
 

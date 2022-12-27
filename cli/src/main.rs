@@ -1,18 +1,33 @@
-#![warn(rust_2018_idioms)]
-#![warn(clippy::all)]
+//! A clap-based CLI app for rebootinto.
 
-#[macro_use]
-extern crate clap;
+use clap::{Parser, Subcommand};
 
-use clap::{App, AppSettings, Arg, SubCommand};
-
-use failure::Error;
 use rebootinto_core as core;
 
-type Result<T> = std::result::Result<T, Error>;
+/// The command line app invocation.
+#[derive(Parser)]
+#[command(version)]
+#[command(about = "Reboot into the specified boot option.", long_about = None)]
+struct Invocation {
+    /// The command that is invoked.
+    #[command(subcommand)]
+    command: Command,
+}
 
-mod boot_next_format;
-use boot_next_format::BootNextFormat;
+/// CLI commands.
+#[derive(Subcommand)]
+enum Command {
+    /// Prints possible boot options.
+    List,
+    /// Reboot into the specified boot option.
+    Reboot {
+        /// The value to set `BootNext` to.
+        load_option: String,
+        /// The format to expect the load option value in.
+        #[arg(short, long, env = "LOAD_OPTION_FORMAT", value_enum, default_value_t = LoadOptionFormat::Hex)]
+        format: LoadOptionFormat,
+    },
+}
 
 fn main() {
     if let Err(err) = run() {
@@ -26,58 +41,70 @@ fn main() {
     }
 }
 
-fn run() -> Result<()> {
+/// Run the app and return the error.
+fn run() -> Result<(), anyhow::Error> {
     let mut backend = core::Backend::init()?;
 
-    let default_boot_next_format: &str = &format!("{}", BootNextFormat::Hex);
+    let invocation = Invocation::parse();
 
-    let matches = App::new(env!("CARGO_PKG_NAME"))
-        .version(crate_version!())
-        .about("Reboot into the specified boot option")
-        .setting(AppSettings::ArgRequiredElseHelp)
-        .subcommand(
-            SubCommand::with_name("list")
-                .aliases(&["ls", "dir"])
-                .about("Prints possible boot options"),
-        )
-        .subcommand(
-            SubCommand::with_name("reboot")
-                .about("Reboot into the specified boot option")
-                .arg(
-                    Arg::with_name("boot_next")
-                        .required(true)
-                        .index(1)
-                        .help("The value to set BootNext to"),
-                )
-                .arg(
-                    Arg::with_name("format")
-                        .short("f")
-                        .possible_values(&BootNextFormat::variants())
-                        .default_value(default_boot_next_format)
-                        .help("The format of the value"),
-                ),
-        )
-        .get_matches();
-
-    match matches.subcommand() {
-        ("list", _) => {
+    match invocation.command {
+        Command::List => {
             for load_option_result in backend.load_options() {
                 let load_option = load_option_result?;
                 println!("{:04X} {}", load_option.number, load_option.description);
             }
             Ok(())
         }
-        ("reboot", Some(submatches)) => {
-            let format = value_t_or_exit!(submatches, "format", BootNextFormat);
-            let boot_next: u16 = format
-                .parse_boot_next(submatches, "boot_next")
-                .unwrap_or_else(|e| e.exit());
+        Command::Reboot {
+            load_option,
+            format,
+        } => {
+            let load_option: u16 = format.parse_boot_next(&load_option)?;
 
-            backend.reboot_into(boot_next)?;
+            backend.reboot_into(load_option)?;
 
-            println!("{:04X}", boot_next);
+            println!("{:04X}", load_option);
             Ok(())
         }
-        _ => unreachable!(),
+    }
+}
+
+/// The format of the `BootNext` value.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, clap::ValueEnum)]
+pub enum LoadOptionFormat {
+    /// The value is a hex number.
+    #[value(alias("h"))]
+    #[value(alias("hexadecimal"))]
+    Hex,
+    /// The value is a decimal number.
+    #[value(alias("d"))]
+    #[value(alias("decimal"))]
+    Dec,
+}
+
+impl LoadOptionFormat {
+    /// Radix of the underlying numeric format.
+    pub fn radix(&self) -> u32 {
+        match self {
+            LoadOptionFormat::Hex => 16,
+            LoadOptionFormat::Dec => 10,
+        }
+    }
+
+    /// Parse the `BootNext` value using the format.
+    pub fn parse_boot_next(&self, value: &str) -> Result<u16, anyhow::Error> {
+        let val = u16::from_str_radix(value, self.radix()).map_err(|err| {
+            anyhow::format_err!("unable to parse the boot option in {self} format: {err}")
+        })?;
+        Ok(val)
+    }
+}
+
+impl std::fmt::Display for LoadOptionFormat {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Self::Dec => f.write_str("decimal"),
+            Self::Hex => f.write_str("hex"),
+        }
     }
 }
