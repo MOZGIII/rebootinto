@@ -1,8 +1,9 @@
 //! The iced app.
 
 use iced::{
-    button, executor, scrollable, Application, Button, Command, Container, Element, Length,
-    Scrollable, Text,
+    alignment, executor,
+    widget::{button, container, scrollable, text, Column},
+    Application, Command, Element, Length, Theme,
 };
 
 use super::core;
@@ -19,16 +20,12 @@ pub struct Init {
 struct ButtonData {
     /// The load option of the button.
     load_option: core::LoadOption,
-    /// The button state.
-    state: button::State,
 }
 
 /// The app.
 pub struct App {
     /// The core backend.
     backend: core::Backend,
-    /// The scroll state.
-    scroll: scrollable::State,
     /// The buttons.
     buttons: Vec<ButtonData>,
     /// The app state.
@@ -66,6 +63,7 @@ pub const LAYOUT_SPACING: u16 = 10;
 impl Application for App {
     type Executor = executor::Default;
     type Message = Message;
+    type Theme = Theme;
     type Flags = Init;
 
     fn new(init: Self::Flags) -> (Self, Command<Self::Message>) {
@@ -75,15 +73,11 @@ impl Application for App {
         } = init;
         let buttons = load_options
             .into_iter()
-            .map(|load_option| ButtonData {
-                load_option,
-                state: button::State::new(),
-            })
+            .map(|load_option| ButtonData { load_option })
             .collect();
 
         let app = Self {
             backend,
-            scroll: scrollable::State::new(),
             buttons,
             state: State::Choosing,
         };
@@ -107,28 +101,35 @@ impl Application for App {
         }
     }
 
-    fn view(&mut self) -> Element<'_, Message> {
+    fn view(&self) -> Element<'_, Message> {
         match self.state {
             State::Choosing => {
-                let layout = Scrollable::new(&mut self.scroll)
-                    .padding(LAYOUT_PADDING)
-                    .spacing(LAYOUT_SPACING)
-                    .width(Length::Fill)
-                    .height(Length::Fill);
-
-                self.buttons
-                    .iter_mut()
-                    .enumerate()
-                    .fold(
-                        layout,
-                        |layout, (index, ButtonData { load_option, state })| {
-                            layout.push(
-                                Button::new(state, Text::new(load_option.description.clone()))
-                                    .width(Length::Fill)
-                                    .on_press(Message::ButtonPressed(index)),
-                            )
-                        },
+                let button = |index: usize, load_option: &core::LoadOption| {
+                    button(
+                        text(&load_option.description)
+                            .width(Length::Fill)
+                            .height(Length::Fill)
+                            .horizontal_alignment(alignment::Horizontal::Center)
+                            .vertical_alignment(alignment::Vertical::Center),
                     )
+                    .width(Length::Fill)
+                    .on_press(Message::ButtonPressed(index))
+                    .into()
+                };
+
+                let buttons = Column::with_children(
+                    self.buttons
+                        .iter()
+                        .enumerate()
+                        .map(|(index, ButtonData { load_option })| button(index, load_option))
+                        .collect(),
+                )
+                .padding(LAYOUT_PADDING)
+                .spacing(LAYOUT_SPACING);
+
+                container(scrollable(buttons))
+                    .width(Length::Fill)
+                    .height(Length::Fill)
                     .into()
             }
             State::Rebooting { index } => {
@@ -141,9 +142,9 @@ impl Application for App {
 }
 
 /// Render text with the standard padding.
-fn text_view<'a>(label: impl Into<String>) -> Element<'a, Message> {
-    let text = Text::new(label).width(Length::Fill).height(Length::Fill);
-    Container::new(text)
+fn text_view<'a>(label: impl ToString) -> Element<'a, Message> {
+    let text = text(label).width(Length::Fill).height(Length::Fill);
+    container(text)
         .padding(LAYOUT_PADDING)
         .width(Length::Fill)
         .height(Length::Fill)

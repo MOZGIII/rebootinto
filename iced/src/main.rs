@@ -2,11 +2,9 @@
 
 #![windows_subsystem = "windows"]
 
-use std::convert::TryInto;
-
 use rebootinto_core as core;
 
-use iced::{window, Application, Settings};
+use iced::{Application, Settings};
 
 mod app;
 
@@ -50,18 +48,11 @@ fn run() -> Result<(), anyhow::Error> {
 
     let size = (350, estimate_window_height(load_options.len()));
 
-    app::App::run(Settings {
-        flags: app::Init {
-            backend,
-            load_options,
-        },
-        window: window::Settings {
-            size,
-            resizable: true,
-            decorations: true,
-        },
-        antialiasing: false,
-        default_font: None,
+    let mut settings = Settings::with_flags(app::Init {
+        backend,
+        load_options,
     });
+    settings.window.size = size;
+    app::App::run(settings)?;
     Ok(())
 }
