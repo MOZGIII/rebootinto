@@ -3,7 +3,7 @@
 use crate::event::Event;
 use crate::input_backend::InputBackend;
 use tui::style::{Modifier, Style};
-use tui::widgets::List;
+use tui::widgets::{List, ListItem};
 use tui::Terminal;
 
 use crate::item::Item;
@@ -42,11 +42,11 @@ impl<'a, B: tui::backend::Backend> BootNextSelectorUI<'a, B> {
 
             {
                 let (iter, state) = state.render_params();
-                self.terminal.draw(|mut f| {
+                self.terminal.draw(|f| {
                     let rect = f.size();
                     let style = Style::default();
-                    let list = List::new(iter.map(Into::into))
-                        .highlight_style(style.modifier(Modifier::BOLD))
+                    let list = List::new(iter.map(ListItem::new).collect::<Vec<_>>())
+                        .highlight_style(style.add_modifier(Modifier::BOLD))
                         .highlight_symbol("- ");
                     f.render_stateful_widget(list, rect, state)
                 })?;
