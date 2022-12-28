@@ -17,7 +17,7 @@ appveyor = { repository = "MOZGIII/rebootinto" }
 rebootinto-core = { path = "../core" }
 
 anyhow = "1"
-iced = "0.1"
+iced = "0.6"
 
 [build-dependencies]
 embed-resource = "1"

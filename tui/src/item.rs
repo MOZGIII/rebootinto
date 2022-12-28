@@ -2,7 +2,7 @@
 
 use crate::core;
 
-use tui::widgets::Text;
+use tui::text::Text;
 
 /// The UI item.
 #[derive(Debug)]
