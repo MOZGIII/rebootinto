@@ -44,10 +44,13 @@ jobs:
         mode:
           - name: clippy
             cargo-command: clippy
+            cargo-args: --workspace -- -D warnings
           - name: test
             cargo-command: test
+            cargo-args: --workspace
           - name: build
             cargo-command: build
+            cargo-args: --workspace
 
       fail-fast: false
     continue-on-error: ${{ matrix.platform.experimental || matrix.rust-toolchain.allow-fail }}
@@ -86,6 +89,7 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: ${{ matrix.mode.cargo-command }}
+          args: ${{ matrix.mode.cargo-args }}
 
   package:
     name: stable / ${{ matrix.platform.name }} / package
@@ -144,7 +148,7 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: build
-          args: --release
+          args: --release --workspace
 
       - name: Do the packaging
         run: ${{ matrix.platform.packaging-script }} "${{ github.workspace }}/target/artifacts"
