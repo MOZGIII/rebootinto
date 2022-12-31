@@ -8,9 +8,11 @@ override_dh_auto_clean:
 	cargo clean
 
 override_dh_auto_test:
+	cargo version
 	cargo test --release
 
 override_dh_auto_build:
+	cargo version
 	cargo build --release
 
 override_dh_auto_install:
