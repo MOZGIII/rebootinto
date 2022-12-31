@@ -32,11 +32,11 @@ enum Command {
 fn main() {
     if let Err(err) = run() {
         match std::env::var("PANIC_ON_ERROR") {
-            Ok(ref val) if val == "true" => panic!("Error: {}", err),
+            Ok(ref val) if val == "true" => panic!("Error: {err}"),
             _ => {}
         }
 
-        eprintln!("Error: {}", err);
+        eprintln!("Error: {err}");
         std::process::exit(1);
     }
 }
@@ -63,7 +63,7 @@ fn run() -> Result<(), anyhow::Error> {
 
             backend.reboot_into(load_option)?;
 
-            println!("{:04X}", load_option);
+            println!("{load_option:04X}");
             Ok(())
         }
     }
