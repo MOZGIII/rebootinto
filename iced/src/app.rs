@@ -88,6 +88,10 @@ impl Application for App {
         String::from("Rebootinto")
     }
 
+    fn theme(&self) -> Self::Theme {
+        Theme::Dark
+    }
+
     fn update(&mut self, message: Message) -> Command<Self::Message> {
         match message {
             Message::ButtonPressed(index) => {
