@@ -29,8 +29,6 @@ Find a commit that has a CI build associated and grab stuff from there.
 As with Github Releases, not everything is currently built there, so if you
 didn't find what you were looking for - try other installation methods.
 
-- [Travis CI](https://travis-ci.org/MOZGIII/rebootinto)
-- [AppVeyor](https://ci.appveyor.com/project/MOZGIII/rebootinto)
 - [Github Actions](https://github.com/MOZGIII/rebootinto/actions)
 
 ### Source installation
@@ -44,40 +42,4 @@ You'll need a [`Rust` installation](https://www.rust-lang.org/tools/install) (st
 
 2. `cargo build --release`
 
-3. Install built executables
-
-   - Raw binaries
-
-     Copy `rebootinto-*` executables from `target/release/` to your desired location.
-
-   - Windows installation via `.msi` file.
-
-     1. Install cargo WIX plugin
-
-        ```shell
-        cargo install cargo-wix
-        ```
-
-     2. Build MSI installer
-
-        ```shell
-        cargo wix
-        ```
-
-   - Debian/Ubuntu installation via locally built `.deb` packages.
-
-     1. Install cargo deb plugin
-
-        ```shell
-        cargo install cargo-deb
-        ```
-
-     2. `cd` into each application directory, build and install `.deb` packages
-
-        ```shell
-        cd cli
-        cargo deb
-        cd -
-        cd target/debian
-        sudo dpkg -i rebootinto-*.deb
-        ```
+3. Install built executables.
