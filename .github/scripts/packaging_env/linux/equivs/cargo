@@ -1,0 +1,6 @@
+Section: misc
+Priority: optional
+Standards-Version: 3.9.2
+
+Package: cargo
+Description: a fake cargo to fulfill the dependency requirement
