@@ -13,11 +13,11 @@ use std::rc::Rc;
 fn main() {
     if let Err(err) = run() {
         match std::env::var("PANIC_ON_ERROR") {
-            Ok(ref val) if val == "true" => panic!("Error: {}", err),
+            Ok(ref val) if val == "true" => panic!("Error: {err}"),
             _ => {}
         }
 
-        eprintln!("Error: {}", err);
+        eprintln!("Error: {err}");
         std::process::exit(1);
     }
 }
@@ -46,7 +46,7 @@ fn run() -> Result<(), anyhow::Error> {
     for load_option in load_options {
         let mut button = Button::new(&ui, &load_option.description);
         button.on_clicked(&ui, {
-            let backend = backend.clone();
+            let backend = Rc::clone(&backend);
             let ui = ui.clone();
             let mut win = win.clone();
             let mut lbl_reboot = lbl_reboot.clone();
@@ -55,7 +55,7 @@ fn run() -> Result<(), anyhow::Error> {
                 let load_option = load_option.clone();
                 let mut backend = backend.borrow_mut();
                 if let Err(err) = backend.reboot_into(load_option.number) {
-                    win.modal_err(&ui, "Reboot error", &format!("Error: {}", err));
+                    win.modal_err(&ui, "Reboot error", &format!("Error: {err}"));
                 } else {
                     let text = format!("Rebooting into:\n{}", load_option.description);
                     lbl_reboot.set_text(&ui, &text);

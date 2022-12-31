@@ -9,11 +9,11 @@ override_dh_auto_clean:
 
 override_dh_auto_test:
 	cargo version
-	cargo test --release
+	cargo test --workspace --release
 
 override_dh_auto_build:
 	cargo version
-	cargo build --release
+	cargo build --workspace --release
 
 override_dh_auto_install:
 	mkdir -p debian/tmp/usr/bin/

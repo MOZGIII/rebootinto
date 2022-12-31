@@ -138,9 +138,9 @@ impl Application for App {
             }
             State::Rebooting { index } => {
                 let load_option = &self.buttons[index].load_option;
-                text_view(format!("Rebooting into {}", load_option))
+                text_view(format!("Rebooting into {load_option}"))
             }
-            State::Error { ref error } => text_view(format!("Error: {}", error)),
+            State::Error { ref error } => text_view(format!("Error: {error}")),
         }
     }
 }

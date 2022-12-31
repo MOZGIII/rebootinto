@@ -11,11 +11,11 @@ mod app;
 fn main() {
     if let Err(err) = run() {
         match std::env::var("PANIC_ON_ERROR") {
-            Ok(ref val) if val == "true" => panic!("Error: {}", err),
+            Ok(ref val) if val == "true" => panic!("Error: {err}"),
             _ => {}
         }
 
-        eprintln!("Error: {}", err);
+        eprintln!("Error: {err}");
         std::process::exit(1);
     }
 }
