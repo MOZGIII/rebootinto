@@ -640,9 +640,9 @@ dependencies = [
 
 [[package]]
 name = "efibootnext"
-version = "0.3.0"
+version = "0.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "82ef0830652fdf44059ba49daecd89e8ed0af711ea5453bb01bd73bc9fc0d9d3"
+checksum = "41befb4a6ae3e6286e1fcc6dfb3b87d07e6fc402ea8ce8a56c57c850a24a5c47"
 dependencies = [
  "efi-loadopt",
  "efivar",
@@ -652,9 +652,9 @@ dependencies = [
 
 [[package]]
 name = "efivar"
-version = "0.2.1"
+version = "0.2.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8e2f50293cdf2780f652e287e797f4992b984004cf01da289ae868cff4c75e0b"
+checksum = "3bb99b4fe904434469422a3494d2d7dc030ad8baf4f575547495e08ec838da6f"
 dependencies = [
  "bitflags",
  "byteorder",
