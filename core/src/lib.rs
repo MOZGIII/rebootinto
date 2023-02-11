@@ -1,5 +1,8 @@
 //! The core implementation of the rebootinto.
 
+#[cfg(target_os = "macos")]
+use rebootinto_efibootnext_mock as efibootnext;
+
 pub use efibootnext::LoadOption;
 
 /// The backend providing the rebootinto flow.
