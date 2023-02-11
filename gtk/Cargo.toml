@@ -1,0 +1,19 @@
+[package]
+name = "rebootinto-gtk"
+version = "0.1.0"
+authors = ["MOZGIII <mike-n@narod.ru>"]
+edition = "2021"
+description = "The GTK-based GUI tool for rebooting into other OS."
+license = "MIT"
+repository = "https://github.com/MOZGIII/rebootinto"
+keywords = ["rebootinto", "reboot", "efi", "uefi", "ui", "gui", "gtk"]
+categories = ["gui"]
+
+[dependencies]
+rebootinto-core = { path = "../core" }
+
+anyhow = "1"
+gtk = { version = "0.6.0", package = "gtk4", features = ["v4_8"] }
+
+[build-dependencies]
+embed-resource = "2.2"
