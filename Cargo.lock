@@ -2090,6 +2090,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "rebootinto-efibootnext-mock"
+version = "0.1.0"
+dependencies = [
+ "thiserror",
+]
+
+[[package]]
 name = "rebootinto-iced"
 version = "0.1.0"
 dependencies = [
