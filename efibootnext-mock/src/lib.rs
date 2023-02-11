@@ -37,7 +37,10 @@ impl Adapter {
 
     /// Mock `set_boot_next` call.
     pub fn set_boot_next(&self, _num: u16) -> Result<(), error::SetBootNextError> {
-        Ok(())
+        match std::env::var("MOCK_SET_BOOT_ERROR") {
+            Ok(val) if val == "true" => Err(error::SetBootNextError),
+            _ => Ok(()),
+        }
     }
 }
 
