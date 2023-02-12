@@ -4,4 +4,5 @@ set -euo pipefail
 brew install \
   ninja \
   meson \
-  llvm
+  llvm \
+  gtk4
