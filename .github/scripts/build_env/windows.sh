@@ -4,10 +4,12 @@ set -euo pipefail
 choco install \
   ninja \
   llvm \
-  vswhere
+  vswhere \
+  msys2 \
+  python3
 
 choco install --source python \
-  meson
+  meson \
+  gvsbuild
 
-pipx install gvsbuild
 gvsbuild build gtk4
