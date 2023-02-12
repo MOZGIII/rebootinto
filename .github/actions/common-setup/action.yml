@@ -36,14 +36,18 @@ runs:
       run: rustup show
       if: ${{ inputs.requiresRust == 'true' }}
 
+    - name: Set up Vistual Studio Command Prompt (Windows only)
+      uses: ilammy/msvc-dev-cmd@v1
+      if: runner.os == 'Windows'
+
+    - name: Build GTK (Windows only)
+      uses: ./.github/actions/build-gtk-windows
+      if: runner.os == 'Windows'
+
     - name: Prepare the build environment
       run: ${{ inputs.buildEnvScript }}
       shell: bash
       if: ${{ inputs.buildEnvScript != 'skip' }}
-
-    - name: Set up Vistual Studio Command Prompt (Windows only)
-      uses: ilammy/msvc-dev-cmd@v1
-      if: runner.os == 'Windows'
 
     - name: Print build environment info
       shell: bash
