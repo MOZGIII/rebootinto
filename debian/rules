@@ -22,4 +22,5 @@ override_dh_auto_install:
 		target/release/rebootinto-tui \
 		target/release/rebootinto-iui \
 		target/release/rebootinto-iced \
+		target/release/rebootinto-gtk \
 		debian/tmp/usr/bin/

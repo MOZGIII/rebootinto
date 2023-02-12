@@ -12,6 +12,7 @@ This project provides the following apps:
 - `rebootinto-tui` - a terminal user interface;
 - `rebootinto-iui` - a graphical user interface (based on `libiui`);
 - `rebootinto-iced` - a graphical user interface (based on `iced` crate).
+- `rebootinto-gtk` - a graphical user interface (based on `gtk` crate).
 
 ## Installation
 

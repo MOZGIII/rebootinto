@@ -10,6 +10,7 @@ sudo apt-get install -y \
   python3-setuptools \
   python3-wheel \
   ninja-build \
-  llvm
+  llvm \
+  libgtk-4-dev
 
 sudo pip3 install meson

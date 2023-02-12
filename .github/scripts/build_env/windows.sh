@@ -8,3 +8,6 @@ choco install \
 
 choco install --source python \
   meson
+
+pipx install gvsbuild
+gvsbuild build gtk4
