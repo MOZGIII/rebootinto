@@ -5,8 +5,7 @@ choco install --no-progress \
   ninja \
   llvm \
   vswhere \
-  msys2 \
-  python3
+  msys2
 
 choco install --no-progress --source python  \
   meson \
