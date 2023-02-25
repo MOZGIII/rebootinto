@@ -1,14 +1,14 @@
 #!/bin/bash
 set -euo pipefail
 
-choco install \
+choco install --no-progress \
   ninja \
   llvm \
   vswhere \
   msys2 \
   python3
 
-choco install --source python \
+choco install --no-progress --source python  \
   meson \
   gvsbuild
 
