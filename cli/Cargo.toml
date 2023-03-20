@@ -17,7 +17,7 @@ appveyor = { repository = "MOZGIII/rebootinto" }
 rebootinto-core = { path = "../core" }
 
 anyhow = "1"
-clap = { version ="4.0", features = ["derive", "env"] }
+clap = { version ="4.1", features = ["derive", "env"] }
 
 [build-dependencies]
 embed-resource = "1"
