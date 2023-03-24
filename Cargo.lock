@@ -684,6 +684,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "embed-resource"
+version = "2.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "dfa45bbf655db75e0be9c80a9d6ed2f5f58d321a623af660f74fd83e0eec07f0"
+dependencies = [
+ "cc",
+ "rustc_version",
+ "toml",
+ "vswhom",
+ "winreg 0.10.1",
+]
+
+[[package]]
 name = "encase"
 version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1394,7 +1407,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0b2f52c7fafd90c25c903a650c9101f2735a9654bda2fe85a02baecf5329c3b0"
 dependencies = [
  "bindgen",
- "embed-resource",
+ "embed-resource 1.8.0",
  "find-winsdk",
  "pkg-config",
 ]
@@ -2076,7 +2089,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "clap",
- "embed-resource",
+ "embed-resource 2.0.0",
  "rebootinto-core",
 ]
 
@@ -2102,7 +2115,7 @@ name = "rebootinto-iced"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "embed-resource",
+ "embed-resource 2.0.0",
  "iced",
  "rebootinto-core",
 ]
@@ -2112,7 +2125,7 @@ name = "rebootinto-iui"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "embed-resource",
+ "embed-resource 2.0.0",
  "iui",
  "rebootinto-core",
 ]
@@ -2123,7 +2136,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "crossterm",
- "embed-resource",
+ "embed-resource 2.0.0",
  "rebootinto-core",
  "termion 2.0.1",
  "tui",
