@@ -5,18 +5,17 @@ use crossterm::{
     execute,
     terminal::{disable_raw_mode, enable_raw_mode, EnterAlternateScreen, LeaveAlternateScreen},
 };
-use std::io;
 use tui::backend::CrosstermBackend;
 
 /// The [`crossterm`] backend.
 pub struct Crossterm {
     /// The underlying implementation handle.
-    inner: CrosstermBackend<AlternateScreenWriter<io::Stdout>>,
+    inner: CrosstermBackend<AlternateScreenWriter<std::io::Stdout>>,
 }
 
 impl Backend for Crossterm {
     fn new() -> Result<Self, anyhow::Error> {
-        let stdout = io::stdout();
+        let stdout = std::io::stdout();
         let stdout = AlternateScreenWriter::new(stdout)?;
         let inner = CrosstermBackend::new(stdout);
         let backend = Self { inner };
