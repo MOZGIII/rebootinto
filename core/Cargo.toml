@@ -8,10 +8,6 @@ license = "MIT"
 repository = "https://github.com/MOZGIII/rebootinto"
 keywords = ["rebootinto", "reboot", "efi", "uefi"]
 
-[badges]
-travis-ci = { repository = "MOZGIII/rebootinto" }
-appveyor = { repository = "MOZGIII/rebootinto" }
-
 [dependencies]
 simplereboot = "0.1"
 thiserror = "1"

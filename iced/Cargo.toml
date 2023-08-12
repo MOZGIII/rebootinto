@@ -9,10 +9,6 @@ repository = "https://github.com/MOZGIII/rebootinto"
 keywords = ["rebootinto", "reboot", "efi", "uefi", "ui", "gui", "iced"]
 categories = ["gui"]
 
-[badges]
-travis-ci = { repository = "MOZGIII/rebootinto" }
-appveyor = { repository = "MOZGIII/rebootinto" }
-
 [dependencies]
 rebootinto-core = { path = "../core" }
 
