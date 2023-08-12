@@ -43,7 +43,7 @@ fn estimate_window_height(items: usize) -> u32 {
 fn run() -> Result<(), anyhow::Error> {
     let mut backend = core::Backend::init()?;
     let load_options = backend
-        .load_options()
+        .load_options()?
         .collect::<Result<Vec<core::LoadOption>, core::LoadOptionError>>()?;
 
     let size = (350, estimate_window_height(load_options.len()));

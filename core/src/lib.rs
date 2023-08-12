@@ -22,10 +22,13 @@ impl Backend {
     /// Provide an iterator over the available load options.
     pub fn load_options(
         &mut self,
-    ) -> impl Iterator<Item = Result<LoadOption, LoadOptionError>> + '_ {
-        self.adapter
+    ) -> Result<impl Iterator<Item = Result<LoadOption, LoadOptionError>> + '_, LoadOptionsError>
+    {
+        let iter = self
+            .adapter
             .load_options()
-            .map(|result| result.map_err(LoadOptionError::Efibootnext))
+            .map_err(LoadOptionsError::Efibootnext)?;
+        Ok(iter.map(|result| result.map_err(LoadOptionError::Efibootnext)))
     }
 
     /// Perform the reboot operation into the given load option.
@@ -41,6 +44,14 @@ impl Backend {
 /// An error that can occur during the initialization.
 #[derive(Debug, thiserror::Error)]
 pub enum InitError {}
+
+/// An error that can occur at the `load_options` call.
+#[derive(Debug, thiserror::Error)]
+pub enum LoadOptionsError {
+    /// Something went wrong while getting the load option.
+    #[error("enumerating load options error: {0}")]
+    Efibootnext(efibootnext::error::EnumerateLoadOptionsError),
+}
 
 /// An error that can occur at the `load_options` call.
 #[derive(Debug, thiserror::Error)]

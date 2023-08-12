@@ -29,13 +29,16 @@ impl Adapter {
     /// Mock `load_options` call.
     pub fn load_options(
         &self,
-    ) -> impl Iterator<Item = Result<LoadOption, error::GetLoadOptionError>> {
-        MOCK_ITEMS.iter().copied().enumerate().map(|(num, item)| {
+    ) -> Result<
+        impl Iterator<Item = Result<LoadOption, error::GetLoadOptionError>>,
+        error::EnumerateLoadOptionsError,
+    > {
+        Ok(MOCK_ITEMS.iter().copied().enumerate().map(|(num, item)| {
             Ok(LoadOption {
                 number: num.try_into().unwrap(),
                 description: item.into(),
             })
-        })
+        }))
     }
 
     /// Mock `set_boot_next` call.
@@ -49,6 +52,11 @@ impl Adapter {
 
 /// Mock errors.
 pub mod error {
+    /// Mock `EnumerateLoadOptionsError`.
+    #[derive(Debug, thiserror::Error)]
+    #[error("mock EnumerateLoadOptionsError")]
+    pub struct EnumerateLoadOptionsError;
+
     /// Mock `GetLoadOptionError`.
     #[derive(Debug, thiserror::Error)]
     #[error("mock GetLoadOptionError")]
