@@ -33,7 +33,7 @@ fn estimate_window_height(items: usize) -> u32 {
         0
     };
 
-    let assumed_button_height = 30;
+    let assumed_button_height = 31;
     let content = displayed_items_estimate * assumed_button_height;
 
     padding + spacing + content
