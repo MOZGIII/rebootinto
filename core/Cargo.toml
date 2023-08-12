@@ -13,7 +13,7 @@ simplereboot = "0.1"
 thiserror = "1"
 
 [target.'cfg(not(target_os = "macos"))'.dependencies]
-efibootnext = "0.3"
+efibootnext = "0.4"
 
 [target.'cfg(target_os = "macos")'.dependencies]
 rebootinto-efibootnext-mock = { path = "../efibootnext-mock" }
