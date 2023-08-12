@@ -708,33 +708,32 @@ dependencies = [
 
 [[package]]
 name = "efi-loadopt"
-version = "0.1.0"
+version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a2462a54e80a3aab33753ecf179b6b37d6f00e9eb1ab0d202bac889f78c0e276"
+checksum = "d4aee6d41d7f6ad011a08e15041f1d917361c0ca91ee03a9798b60d5c390fea3"
 dependencies = [
  "byteorder",
- "failure",
+ "thiserror",
 ]
 
 [[package]]
 name = "efibootnext"
-version = "0.3.1"
+version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "41befb4a6ae3e6286e1fcc6dfb3b87d07e6fc402ea8ce8a56c57c850a24a5c47"
+checksum = "38367aab1a87e6d854aa20b51d4ad60466b1ee2ced99f8b1723e791d3ece8fd4"
 dependencies = [
  "efi-loadopt",
  "efivar",
- "failure",
  "thiserror",
 ]
 
 [[package]]
 name = "efivar"
-version = "0.2.2"
+version = "1.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3bb99b4fe904434469422a3494d2d7dc030ad8baf4f575547495e08ec838da6f"
+checksum = "2a93f818b384b2bc4696baee65bdaa8e35b0280fe04586af08d5c878552c45f3"
 dependencies = [
- "bitflags 1.3.2",
+ "bitflags 2.4.0",
  "byteorder",
  "failure",
  "lazy_static",
@@ -2762,9 +2761,9 @@ checksum = "711b9620af191e0cdc7468a8d14e709c3dcdb115b36f838e601583af800a370a"
 
 [[package]]
 name = "uuid"
-version = "0.8.2"
+version = "1.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bc5cf98d8186244414c848017f0e2676b3fcb46807f6668a97dfe67359a3c4b7"
+checksum = "79daa5ed5740825c40b389c5e50312b9c86df53fccd33f281df655642b43869d"
 dependencies = [
  "serde",
 ]
