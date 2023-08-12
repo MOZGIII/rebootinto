@@ -9,15 +9,11 @@ repository = "https://github.com/MOZGIII/rebootinto"
 keywords = ["rebootinto", "reboot", "efi", "uefi", "cli"]
 categories = ["command-line-utilities"]
 
-[badges]
-travis-ci = { repository = "MOZGIII/rebootinto" }
-appveyor = { repository = "MOZGIII/rebootinto" }
-
 [dependencies]
 rebootinto-core = { path = "../core" }
 
 anyhow = "1"
-clap = { version ="4.0", features = ["derive", "env"] }
+clap = { version = "4.0", features = ["derive", "env"] }
 
 [build-dependencies]
-embed-resource = "1"
+embed-resource = "2.2"
