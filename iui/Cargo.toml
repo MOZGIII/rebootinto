@@ -20,4 +20,4 @@ rev = "5d526e4d8d817a0736f60835259070ffa58b8b42"
 features = ["static"]
 
 [build-dependencies]
-embed-resource = "1"
+embed-resource = "2.2"
