@@ -4,20 +4,18 @@ use super::Backend;
 use crossterm::{
     execute,
     terminal::{disable_raw_mode, enable_raw_mode, EnterAlternateScreen, LeaveAlternateScreen},
-    ErrorKind,
 };
-use std::io;
 use tui::backend::CrosstermBackend;
 
 /// The [`crossterm`] backend.
 pub struct Crossterm {
     /// The underlying implementation handle.
-    inner: CrosstermBackend<AlternateScreenWriter<io::Stdout>>,
+    inner: CrosstermBackend<AlternateScreenWriter<std::io::Stdout>>,
 }
 
 impl Backend for Crossterm {
     fn new() -> Result<Self, anyhow::Error> {
-        let stdout = io::stdout();
+        let stdout = std::io::stdout();
         let stdout = AlternateScreenWriter::new(stdout)?;
         let inner = CrosstermBackend::new(stdout);
         let backend = Self { inner };
@@ -33,7 +31,7 @@ struct AlternateScreenWriter<W: std::io::Write>(W);
 
 impl<W: std::io::Write> AlternateScreenWriter<W> {
     /// Create a new [`AlternateScreenWriter`] over `w`.
-    pub fn new(mut w: W) -> std::result::Result<Self, ErrorKind> {
+    pub fn new(mut w: W) -> std::io::Result<Self> {
         enable_raw_mode()?;
         execute!(&mut w, EnterAlternateScreen)?;
         Ok(Self(w))
