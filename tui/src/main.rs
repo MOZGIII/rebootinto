@@ -34,7 +34,7 @@ fn main() {
 fn run() -> Result<(), anyhow::Error> {
     let mut backend = core::Backend::init()?;
     let load_options = backend
-        .load_options()
+        .load_options()?
         .collect::<Result<Vec<core::LoadOption>, core::LoadOptionError>>()?;
 
     if load_options.is_empty() {
