@@ -2,7 +2,10 @@
 
 /// A mock `Adapter`.
 #[derive(Debug, Default)]
-pub struct Adapter;
+pub struct Adapter {
+    /// Just a dummy private items to make linters happy.
+    _private: (),
+}
 
 /// The mock [`LoadOption`] type.
 #[derive(Debug, Clone, PartialEq, Eq)]
