@@ -6,7 +6,7 @@ on:
       - master
   pull_request:
   schedule:
-    - cron:  '0 20 * * 0'
+    - cron: "0 20 * * 0"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
@@ -17,13 +17,11 @@ defaults:
     shell: bash
 
 jobs:
-
   test:
     name: ${{ matrix.rust-toolchain.name }} / ${{ matrix.platform.name }} / ${{ matrix.mode.name }}
     runs-on: ${{ matrix.platform.os }}
     strategy:
       matrix:
-
         rust-toolchain:
           - name: stable
             allow-fail: false
@@ -56,7 +54,6 @@ jobs:
     continue-on-error: ${{ matrix.platform.experimental || matrix.rust-toolchain.allow-fail }}
     env: ${{ matrix.platform.env }}
     steps:
-
       - name: Job config
         run: echo "$MATRIX_CONTEXT"
         env:
@@ -96,7 +93,6 @@ jobs:
     runs-on: ${{ matrix.platform.os }}
     strategy:
       matrix:
-
         platform:
           - name: Windows
             os: windows-latest
@@ -115,7 +111,6 @@ jobs:
       fail-fast: false
     env: ${{ matrix.platform.env }}
     steps:
-
       - name: Job config
         run: echo "$MATRIX_CONTEXT"
         env:
