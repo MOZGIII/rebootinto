@@ -7,10 +7,4 @@ choco install --no-progress \
   vswhere \
   msys2
 
-choco install --no-progress --source python \
-  meson \
-  gvsbuild
-
-gvsbuild build \
-  --from-scratch \
-  gtk4
+pacman -S mingw-w64-x86_64-gtk4
