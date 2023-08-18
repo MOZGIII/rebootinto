@@ -13,7 +13,7 @@ categories = ["command-line-utilities"]
 rebootinto-core = { path = "../core" }
 
 anyhow = "1"
-clap = { version = "4.0", features = ["derive", "env"] }
+clap = { version = "4.3", features = ["derive", "env"] }
 
 [build-dependencies]
 embed-resource = "2.2"
