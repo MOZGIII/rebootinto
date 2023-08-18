@@ -1,10 +1,10 @@
 #!/bin/bash
 set -euo pipefail
 
-choco install --no-progress \
+choco install -y --no-progress \
   ninja \
   llvm \
   vswhere
 
-choco install --no-progress --source python \
+choco install -y --no-progress --source python \
   meson
