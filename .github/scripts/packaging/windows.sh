@@ -17,6 +17,7 @@ ARTIFACTS=(
   target/release/rebootinto-tui.exe
   target/release/rebootinto-iui.exe
   target/release/rebootinto-iced.exe
+  target/release/rebootinto-gtk.exe
 )
 
 cp -t "$ARTIFACTS_DIR" "${ARTIFACTS[@]}"

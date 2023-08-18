@@ -10,7 +10,7 @@ Vcs-Browser: https://github.com/MOZGIII/rebootinto
 
 Package: rebootinto
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, rebootinto-cli, rebootinto-tui, rebootinto-iui
+Depends: ${shlibs:Depends}, ${misc:Depends}, rebootinto-cli, rebootinto-tui, rebootinto-iui, rebootinto-gtk
 Description: Tools for rebooting into other OS.
 
 Package: rebootinto-cli
@@ -32,3 +32,8 @@ Package: rebootinto-iced
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: The iced-based GUI tool for rebooting into other OS.
+
+Package: rebootinto-gtk
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: The GTK-based GUI tool for rebooting into other OS.

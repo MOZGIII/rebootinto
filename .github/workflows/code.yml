@@ -68,7 +68,7 @@ jobs:
         with:
           platformCacheKey: ${{ matrix.platform.cacheKey }}
           buildEnvScript: ${{ matrix.platform.buildEnvScript }}
-        timeout-minutes: 10
+        timeout-minutes: 25
 
       - name: Run cargo ${{ matrix.mode.cargoCommand }}
         uses: actions-rs/cargo@v1
@@ -111,7 +111,7 @@ jobs:
         with:
           platformCacheKey: ${{ matrix.platform.cacheKey }}
           buildEnvScript: ${{ matrix.platform.packagingEnvScript }}
-        timeout-minutes: 10
+        timeout-minutes: 25
 
       - name: Run cargo build (release)
         uses: actions-rs/cargo@v1

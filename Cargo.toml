@@ -7,4 +7,5 @@ members = [
   "tui",
   "iui",
   "iced",
+  "gtk",
 ]

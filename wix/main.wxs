@@ -28,6 +28,12 @@
         <ComponentRef Id="rebootinto_iced_shortcut" />
       </Feature>
     </Feature>
+    <Feature Id="feature_rebootinto_gtk" Title="Graphical Interface (GTK)" Description="Installs the GTK-based Graphical UI executable." Level="1" ConfigurableDirectory="APPLICATIONFOLDER" AllowAdvertise="no" Display="expand" AllowAbsent="no">
+      <ComponentRef Id="rebootinto_gtk_binary" />
+      <Feature Id="feature_start_menu_shortcut_gtk" Title="Start Menu Shortcuts" Description="Add start menu shortcuts for GTK-based GUI." Level="1">
+        <ComponentRef Id="rebootinto_gtk_shortcut" />
+      </Feature>
+    </Feature>
     <Feature Id="feature_env_path" Title="PATH Environment Variable" Description="Add the install location of the [ProductName] executables to the PATH system environment variable. This allows the [ProductName] executables to be called from any location." Level="1">
       <ComponentRef Id="path" />
     </Feature>
@@ -63,6 +69,10 @@
             <File Id="rebootinto_iced_exe" Name="rebootinto-iced.exe" DiskId="1" KeyPath="yes" />
           </Component>
 
+          <Component Id="rebootinto_gtk_binary" Bitness="always64">
+            <File Id="rebootinto_gtk_exe" Name="rebootinto-gtk.exe" DiskId="1" KeyPath="yes" />
+          </Component>
+
         </Directory>
       </Directory>
     </StandardDirectory>
@@ -79,6 +89,10 @@
       <Component Id="rebootinto_iced_shortcut">
         <Shortcut Id="rebootinto_iced_exe_shortcut" Name="Rebootinto (iced)" Description="Reboot into other OS (iced-based Graphical UI)" Target="[!rebootinto_iced_exe]" WorkingDirectory="Bin" />
         <RegistryValue Root="HKCU" Key="Software\MOZGIII\RebootintoInstaller" Name="rebootinto_iced_shortcut" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+      <Component Id="rebootinto_gtk_shortcut">
+        <Shortcut Id="rebootinto_gtk_exe_shortcut" Name="Rebootinto (GTK)" Description="Reboot into other OS (GTK-based Graphical UI)" Target="[!rebootinto_gtk_exe]" WorkingDirectory="Bin" />
+        <RegistryValue Root="HKCU" Key="Software\MOZGIII\RebootintoInstaller" Name="rebootinto_gtk_shortcut" Type="integer" Value="1" KeyPath="yes" />
       </Component>
     </StandardDirectory>
   </Package>
