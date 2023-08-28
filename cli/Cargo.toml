@@ -16,4 +16,4 @@ anyhow = "1"
 clap = { version = "4.3", features = ["derive", "env"] }
 
 [build-dependencies]
-embed-resource = "2.2"
+embed-resource = "2.3"

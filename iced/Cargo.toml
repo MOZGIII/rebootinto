@@ -16,4 +16,4 @@ anyhow = "1"
 iced = "0.10"
 
 [build-dependencies]
-embed-resource = "2.2"
+embed-resource = "2.3"
