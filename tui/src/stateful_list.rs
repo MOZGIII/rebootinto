@@ -1,6 +1,6 @@
 //! A stateful list implementation.
 
-use tui::widgets::ListState;
+use ratatui::widgets::ListState;
 
 /// The stateful list.
 ///

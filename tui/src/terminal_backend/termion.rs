@@ -1,11 +1,11 @@
 //! The terminal backend implementation via [`termion`].
 
 use super::Backend;
+use ratatui::backend::TermionBackend;
 use std::io;
 use termion::input::MouseTerminal;
 use termion::raw::{IntoRawMode, RawTerminal};
 use termion::screen::{AlternateScreen, IntoAlternateScreen};
-use tui::backend::TermionBackend;
 
 /// The [`termion`] backend.
 pub struct Termion {

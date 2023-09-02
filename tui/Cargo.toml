@@ -6,15 +6,15 @@ edition = "2021"
 description = "The Terminal UI tool for rebooting into other OS."
 license = "MIT"
 repository = "https://github.com/MOZGIII/rebootinto"
-keywords = ["rebootinto", "reboot", "efi", "uefi", "tui"]
+keywords = ["rebootinto", "reboot", "efi", "uefi", "tui", "ratatui"]
 
 [dependencies]
 rebootinto-core = { path = "../core" }
 
 anyhow = "1"
 
-[dependencies.tui]
-version = "0.19"
+[dependencies.ratatui]
+version = "0.23"
 default-features = false
 optional = true
 
@@ -27,9 +27,9 @@ version = "0.27"
 optional = true
 
 [features]
-crossterm_backend = ["crossterm", "tui", "tui/crossterm"]
+crossterm_backend = ["crossterm", "ratatui", "ratatui/crossterm"]
 crossterm_backend_sync_input = ["crossterm_backend"]
-termion_backend = ["termion", "tui", "tui/termion"]
+termion_backend = ["termion", "ratatui", "ratatui/termion"]
 default = ["crossterm_backend"]
 
 [build-dependencies]
