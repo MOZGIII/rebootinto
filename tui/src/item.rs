@@ -2,7 +2,7 @@
 
 use crate::core;
 
-use tui::text::Text;
+use ratatui::text::Text;
 
 /// The UI item.
 #[derive(Debug)]

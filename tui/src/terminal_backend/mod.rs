@@ -11,7 +11,7 @@ mod termion;
 pub use self::termion::Termion as Impl;
 
 /// The backend.
-pub trait Backend: tui::backend::Backend {
+pub trait Backend: ratatui::backend::Backend {
     /// Constrct and initializer a new backend.
     fn new() -> Result<Self, anyhow::Error>
     where

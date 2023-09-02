@@ -1,8 +1,8 @@
-//! A tui-based CLI app for rebootinto.
+//! A [`ratatui`]-based CLI app for rebootinto.
 
 use rebootinto_core as core;
 
-use tui::Terminal;
+use ratatui::Terminal;
 
 #[macro_use]
 mod macros;

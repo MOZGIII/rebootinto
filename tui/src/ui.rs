@@ -2,15 +2,15 @@
 
 use crate::event::Event;
 use crate::input_backend::InputBackend;
-use tui::style::{Modifier, Style};
-use tui::widgets::{List, ListItem};
-use tui::Terminal;
+use ratatui::style::{Modifier, Style};
+use ratatui::widgets::{List, ListItem};
+use ratatui::Terminal;
 
 use crate::item::Item;
 use crate::stateful_list::StatefulList;
 
 /// The UI for selecting the boot option to use as [`BootNext`].
-pub struct BootNextSelectorUI<'a, B: tui::backend::Backend> {
+pub struct BootNextSelectorUI<'a, B: ratatui::backend::Backend> {
     /// The terminal backend.
     terminal: &'a mut Terminal<B>,
     /// The input backend.
@@ -19,7 +19,7 @@ pub struct BootNextSelectorUI<'a, B: tui::backend::Backend> {
     state: StatefulList<'a, Item>,
 }
 
-impl<'a, B: tui::backend::Backend> BootNextSelectorUI<'a, B> {
+impl<'a, B: ratatui::backend::Backend> BootNextSelectorUI<'a, B> {
     /// Construct a new [`Self`].
     pub fn new(
         terminal: &'a mut Terminal<B>,

@@ -1,12 +1,12 @@
 //! The terminal backend utility macros.
 
-/// Delegate the implementation of the [`tui`] backend.
+/// Delegate the implementation of the [`ratatui`] backend.
 #[macro_export]
 macro_rules! delegate_backend_impl {
     ($impl_for:ty, $this:ident => $to:expr) => {
-        use tui::backend::Backend as TuiBackend;
-        use tui::buffer::Cell;
-        use tui::layout::Rect;
+        use ratatui::backend::Backend as TuiBackend;
+        use ratatui::buffer::Cell;
+        use ratatui::layout::Rect;
 
         impl TuiBackend for $impl_for {
             fn draw<'a, I>(&mut $this, content: I) -> std::io::Result<()>
