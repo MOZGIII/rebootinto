@@ -16,4 +16,4 @@ anyhow = "1"
 gtk = { version = "0.7.2", package = "gtk4", features = ["v4_2"] }
 
 [build-dependencies]
-embed-resource = "2.3"
+embed-resource = "2.5"

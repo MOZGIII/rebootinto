@@ -33,4 +33,4 @@ termion_backend = ["termion", "ratatui", "ratatui/termion"]
 default = ["crossterm_backend"]
 
 [build-dependencies]
-embed-resource = "2.3"
+embed-resource = "2.5"
