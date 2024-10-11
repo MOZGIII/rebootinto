@@ -13,7 +13,7 @@ categories = ["gui"]
 rebootinto-core = { path = "../core" }
 
 anyhow = "1"
-iced = "0.10"
+iced = "0.13"
 
 [build-dependencies]
 embed-resource = "2.3"
