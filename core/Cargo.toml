@@ -10,7 +10,7 @@ keywords = ["rebootinto", "reboot", "efi", "uefi"]
 
 [dependencies]
 simplereboot = "0.1"
-thiserror = "1"
+thiserror = "2"
 
 [target.'cfg(not(target_os = "macos"))'.dependencies]
 efibootnext = "0.5"
