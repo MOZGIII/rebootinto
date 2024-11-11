@@ -740,15 +740,16 @@ dependencies = [
 
 [[package]]
 name = "embed-resource"
-version = "2.3.0"
+version = "3.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fd0a2c9b742a980060d22545a7a83b573acd6b73045b9de6370c9530ce652f27"
+checksum = "4762ce03154ba57ebaeee60cc631901ceae4f18219cbb874e464347471594742"
 dependencies = [
  "cc",
+ "memchr",
  "rustc_version",
- "toml 0.7.6",
+ "toml 0.8.2",
  "vswhom",
- "winreg 0.51.0",
+ "winreg 0.52.0",
 ]
 
 [[package]]
@@ -1793,9 +1794,9 @@ dependencies = [
 
 [[package]]
 name = "memchr"
-version = "2.6.2"
+version = "2.7.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5486aed0026218e61b8a01d5fbd5a0a134649abb71a0e53b7bc088529dced86e"
+checksum = "78ca9ab1a0babb1e7d5695e3530886289c18cf2f87ec19a575a0abdce112e3a3"
 
 [[package]]
 name = "memmap2"
@@ -2369,7 +2370,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7f4c021e1093a56626774e81216a4ce732a735e5bad4868a03f3ed65ca0c3919"
 dependencies = [
  "once_cell",
- "toml_edit",
+ "toml_edit 0.19.14",
 ]
 
 [[package]]
@@ -2501,7 +2502,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "clap",
- "embed-resource 2.3.0",
+ "embed-resource 3.0.1",
  "rebootinto-core",
 ]
 
@@ -2527,7 +2528,7 @@ name = "rebootinto-gtk"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "embed-resource 2.3.0",
+ "embed-resource 3.0.1",
  "gtk4",
  "rebootinto-core",
 ]
@@ -2537,7 +2538,7 @@ name = "rebootinto-iced"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "embed-resource 2.3.0",
+ "embed-resource 3.0.1",
  "iced",
  "rebootinto-core",
 ]
@@ -2547,7 +2548,7 @@ name = "rebootinto-iui"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "embed-resource 2.3.0",
+ "embed-resource 3.0.1",
  "iui",
  "rebootinto-core",
 ]
@@ -2558,7 +2559,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "crossterm",
- "embed-resource 2.3.0",
+ "embed-resource 3.0.1",
  "ratatui",
  "rebootinto-core",
  "termion",
@@ -3124,7 +3125,19 @@ dependencies = [
  "serde",
  "serde_spanned",
  "toml_datetime",
- "toml_edit",
+ "toml_edit 0.19.14",
+]
+
+[[package]]
+name = "toml"
+version = "0.8.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "185d8ab0dfbb35cf1399a6344d8484209c088f75f8f68230da55d48d95d43e3d"
+dependencies = [
+ "serde",
+ "serde_spanned",
+ "toml_datetime",
+ "toml_edit 0.20.2",
 ]
 
 [[package]]
@@ -3141,6 +3154,19 @@ name = "toml_edit"
 version = "0.19.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f8123f27e969974a3dfba720fdb560be359f57b44302d280ba72e76a74480e8a"
+dependencies = [
+ "indexmap 2.0.0",
+ "serde",
+ "serde_spanned",
+ "toml_datetime",
+ "winnow",
+]
+
+[[package]]
+name = "toml_edit"
+version = "0.20.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "396e4d48bbb2b7554c944bde63101b5ae446cff6ec4a24227428f15eb72ef338"
 dependencies = [
  "indexmap 2.0.0",
  "serde",
@@ -3876,9 +3902,9 @@ dependencies = [
 
 [[package]]
 name = "winreg"
-version = "0.51.0"
+version = "0.52.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "937f3df7948156640f46aacef17a70db0de5917bda9c92b0f751f3a955b588fc"
+checksum = "a277a57398d4bfa075df44f501a17cfdf8542d224f0d36095a2adc7aee4ef0a5"
 dependencies = [
  "cfg-if",
  "windows-sys 0.48.0",
