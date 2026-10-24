@@ -7,6 +7,9 @@
     <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" DiskPrompt="CD-ROM #1" />
     <Property Id="DiskPrompt" Value="rebootinto installation" />
 
+    <Icon Id="rebootinto.ico" SourceFile="assets\icon.ico" />
+    <Property Id="ARPPRODUCTICON" Value="rebootinto.ico" />
+
     <Feature Id="feature_rebootinto_cli" Title="Command Line Interface (CLI)" Description="Installs command line executable." Level="1" ConfigurableDirectory="APPLICATIONFOLDER" AllowAdvertise="no" Display="expand" AllowAbsent="no">
       <ComponentRef Id="rebootinto_cli_binary" />
     </Feature>
