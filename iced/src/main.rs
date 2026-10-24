@@ -8,6 +8,9 @@ use iced::{Application, Settings};
 
 mod app;
 
+/// The application icon, shown by the window manager.
+const ICON_PNG: &[u8] = include_bytes!("../../assets/icons/hicolor/128x128/apps/rebootinto.png");
+
 fn main() {
     if let Err(err) = run() {
         match std::env::var("PANIC_ON_ERROR") {
@@ -39,6 +42,21 @@ fn estimate_window_height(items: usize) -> u32 {
     padding + spacing + content
 }
 
+/// Decodes the application icon into a window icon.
+fn window_icon() -> Result<iced::window::Icon, anyhow::Error> {
+    let mut reader = png::Decoder::new(ICON_PNG).read_info()?;
+    let mut buf = vec![0; reader.output_buffer_size()];
+    let info = reader.next_frame(&mut buf)?;
+    anyhow::ensure!(
+        info.color_type == png::ColorType::Rgba && info.bit_depth == png::BitDepth::Eight,
+        "unexpected icon format: {:?} {:?}",
+        info.color_type,
+        info.bit_depth,
+    );
+    buf.truncate(info.buffer_size());
+    Ok(iced::window::icon::from_rgba(buf, info.width, info.height)?)
+}
+
 /// Run the app and return the error.
 fn run() -> Result<(), anyhow::Error> {
     let mut backend = core::Backend::init()?;
@@ -53,6 +71,10 @@ fn run() -> Result<(), anyhow::Error> {
         load_options,
     });
     settings.window.size = size;
+    match window_icon() {
+        Ok(icon) => settings.window.icon = Some(icon),
+        Err(err) => eprintln!("Unable to load the window icon: {err}"),
+    }
     app::App::run(settings)?;
     Ok(())
 }
