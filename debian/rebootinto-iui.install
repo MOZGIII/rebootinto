@@ -1,2 +1,3 @@
 debian/tmp/usr/bin/rebootinto-iui
 iui/rebootinto.iui.desktop usr/share/applications/
+iui/rebootinto.iui.policy usr/share/polkit-1/actions/

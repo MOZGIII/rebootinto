@@ -1,2 +1,3 @@
 debian/tmp/usr/bin/rebootinto-iced
 iced/rebootinto.iced.desktop usr/share/applications/
+iced/rebootinto.iced.policy usr/share/polkit-1/actions/
