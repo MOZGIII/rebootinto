@@ -2,7 +2,7 @@
 Type=Application
 Name=Rebootinto (GTK)
 Comment=Reboot into other OS (GTK-based Graphical UI)
-Exec=rebootinto-gtk
+Exec=pkexec /usr/bin/rebootinto-gtk
 Icon=rebootinto
 Terminal=false
 Categories=System;

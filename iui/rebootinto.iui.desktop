@@ -2,7 +2,7 @@
 Type=Application
 Name=Rebootinto (IUI)
 Comment=Reboot into other OS (IUI-based Graphical UI)
-Exec=rebootinto-iui
+Exec=pkexec /usr/bin/rebootinto-iui
 Icon=rebootinto
 Terminal=false
 Categories=System;
