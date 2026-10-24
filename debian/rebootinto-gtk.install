@@ -1,1 +1,2 @@
 debian/tmp/usr/bin/rebootinto-gtk
+gtk/rebootinto.gtk.desktop usr/share/applications/

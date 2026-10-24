@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Rebootinto (GTK)
+Comment=Reboot into other OS (GTK-based Graphical UI)
+Exec=rebootinto-gtk
+Icon=rebootinto
+Terminal=false
+Categories=System;
+Keywords=reboot;boot;uefi;efi;os;
+StartupWMClass=mozgiii.Rebootinto

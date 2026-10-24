@@ -1,1 +1,2 @@
 debian/tmp/usr/bin/rebootinto-tui
+tui/rebootinto.tui.desktop usr/share/applications/

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Rebootinto (TUI)
+Comment=Reboot into other OS (Terminal UI)
+Exec=rebootinto-tui
+Icon=rebootinto
+Terminal=true
+Categories=System;
+Keywords=reboot;boot;uefi;efi;os;
