@@ -1,4 +1,6 @@
-# rebootinto
+<h1 align="center">
+  <img src="assets/logo.svg" alt="rebootinto" width="460">
+</h1>
 
 Instruct your system to reboot into a particular OS.
 
