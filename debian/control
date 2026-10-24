@@ -25,20 +25,20 @@ Description: The command line tool for rebooting into other OS.
 
 Package: rebootinto-tui
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, rebootinto-data
+Depends: ${shlibs:Depends}, ${misc:Depends}, rebootinto-data, pkexec | policykit-1
 Description: The Terminal UI tool for rebooting into other OS.
 
 Package: rebootinto-iui
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, rebootinto-data
+Depends: ${shlibs:Depends}, ${misc:Depends}, rebootinto-data, pkexec | policykit-1
 Description: The IUI-based GUI tool for rebooting into other OS.
 
 Package: rebootinto-iced
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, rebootinto-data
+Depends: ${shlibs:Depends}, ${misc:Depends}, rebootinto-data, pkexec | policykit-1
 Description: The iced-based GUI tool for rebooting into other OS.
 
 Package: rebootinto-gtk
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, rebootinto-data
+Depends: ${shlibs:Depends}, ${misc:Depends}, rebootinto-data, pkexec | policykit-1
 Description: The GTK-based GUI tool for rebooting into other OS.

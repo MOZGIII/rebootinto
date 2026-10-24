@@ -2,7 +2,7 @@
 Type=Application
 Name=Rebootinto (iced)
 Comment=Reboot into other OS (iced-based Graphical UI)
-Exec=rebootinto-iced
+Exec=pkexec /usr/bin/rebootinto-iced
 Icon=rebootinto
 Terminal=false
 Categories=System;
