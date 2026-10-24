@@ -1,1 +1,2 @@
 debian/tmp/usr/bin/rebootinto-iui
+iui/rebootinto.iui.desktop usr/share/applications/

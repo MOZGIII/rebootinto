@@ -2539,6 +2539,7 @@ dependencies = [
  "anyhow",
  "embed-resource 2.3.0",
  "iced",
+ "png",
  "rebootinto-core",
 ]
 

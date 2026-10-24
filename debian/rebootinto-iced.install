@@ -1,1 +1,2 @@
 debian/tmp/usr/bin/rebootinto-iced
+iced/rebootinto.iced.desktop usr/share/applications/

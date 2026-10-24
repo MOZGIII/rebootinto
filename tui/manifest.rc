@@ -2,3 +2,4 @@
 #define CREATEPROCESS_MANIFEST_RESOURCE_ID 1
 #define RT_MANIFEST 24
 CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "rebootinto-tui.exe.manifest"
+1 ICON "../assets/icon.ico"

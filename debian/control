@@ -13,6 +13,11 @@ Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, rebootinto-cli, rebootinto-tui, rebootinto-iui, rebootinto-gtk
 Description: Tools for rebooting into other OS.
 
+Package: rebootinto-data
+Architecture: all
+Depends: ${misc:Depends}
+Description: Shared data, such as icons, for the rebootinto tools.
+
 Package: rebootinto-cli
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
@@ -20,20 +25,20 @@ Description: The command line tool for rebooting into other OS.
 
 Package: rebootinto-tui
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, rebootinto-data
 Description: The Terminal UI tool for rebooting into other OS.
 
 Package: rebootinto-iui
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, rebootinto-data
 Description: The IUI-based GUI tool for rebooting into other OS.
 
 Package: rebootinto-iced
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, rebootinto-data
 Description: The iced-based GUI tool for rebooting into other OS.
 
 Package: rebootinto-gtk
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, rebootinto-data
 Description: The GTK-based GUI tool for rebooting into other OS.
