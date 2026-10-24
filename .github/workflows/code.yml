@@ -28,8 +28,8 @@ jobs:
 
         platform:
           - name: Linux
-            os: ubuntu-latest
-            cacheKey: ubuntu-latest
+            os: ubuntu-24.04
+            cacheKey: ubuntu-24.04
             buildEnvScript: .github/scripts/build_env/linux.sh
             env: {}
             experimental: false
@@ -90,7 +90,7 @@ jobs:
               CARGO_INCREMENTAL: "0"
             experimental: false
           - name: Linux
-            os: ubuntu-latest
+            os: ubuntu-24.04
             packagingEnvScript: .github/scripts/packaging_env/linux.sh
             packagingScript: .github/scripts/packaging/linux.sh
             env: {}
@@ -123,7 +123,7 @@ jobs:
         run: ${{ matrix.platform.packagingScript }} "${{ github.workspace }}/target/artifacts"
 
       - name: Upload packaged artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.platform.name }} Build
           path: ${{ github.workspace }}/target/artifacts
