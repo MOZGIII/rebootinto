@@ -7,9 +7,9 @@ runs:
       id: cache
       with:
         path: c:/gnome
-        key: ${{ runner.os }}-gtk
+        key: ${{ runner.os }}-gtk-4.24.1
         restore-keys: |
-          ${{ runner.os }}-gtk
+          ${{ runner.os }}-gtk-4.24.1
 
     - name: Set up the PATH environment
       shell: bash
@@ -33,7 +33,7 @@ runs:
       working-directory: /
       if: steps.cache.outputs.cache-hit != 'true'
       run: |
-        git clone https://gitlab.gnome.org/GNOME/gtk.git --depth 1
+        git clone https://gitlab.gnome.org/GNOME/gtk.git --depth 1 --branch 4.24.1
 
     - name: Setup Python
       uses: actions/setup-python@v2
@@ -55,7 +55,9 @@ runs:
           -Dbackend_max_links=1 `
           -Dbuild-demos=false `
           -Dbuild-tests=false `
+          -Dbuild-testsuite=false `
           -Dmedia-gstreamer=disabled `
+          -Dvulkan=disabled `
           -Dbuild-examples=false `
           -Dglib:tests=false `
           -Dharfbuzz:tests=disabled `
@@ -69,6 +71,9 @@ runs:
       working-directory: /gtk
       if: steps.cache.outputs.cache-hit != 'true'
       run: |
+        # glib-compile-resources spawns xmllint through the gspawn helpers,
+        # but nothing orders them before it, so they are built first.
+        meson compile -C builddir gspawn-win64-helper gspawn-win64-helper-console
         meson install -C builddir
 
     - name: List the contents
