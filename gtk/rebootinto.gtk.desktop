@@ -7,4 +7,3 @@ Icon=rebootinto
 Terminal=false
 Categories=System;
 Keywords=reboot;boot;uefi;efi;os;
-StartupWMClass=mozgiii.Rebootinto

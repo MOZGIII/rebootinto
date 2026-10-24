@@ -11,8 +11,8 @@ use rebootinto_core as core;
 use gtk::{prelude::*, Button, Orientation, PolicyType, ScrolledWindow};
 use gtk::{Application, ApplicationWindow};
 
-/// The Application ID.
-const APP_ID: &str = "mozgiii.Rebootinto";
+/// The application ID, which matches the basename of the desktop entry.
+const APP_ID: &str = "rebootinto.gtk";
 
 /// The icon name in the icon theme.
 const ICON_NAME: &str = "rebootinto";
