@@ -11,6 +11,10 @@ mod app;
 /// The application icon, shown by the window manager.
 const ICON_PNG: &[u8] = include_bytes!("../../assets/icons/hicolor/128x128/apps/rebootinto.png");
 
+/// The application ID, which matches the basename of the desktop entry.
+#[cfg(target_os = "linux")]
+const APP_ID: &str = "rebootinto.iced";
+
 fn main() {
     if let Err(err) = run() {
         match std::env::var("PANIC_ON_ERROR") {
@@ -74,6 +78,10 @@ fn run() -> Result<(), anyhow::Error> {
     match window_icon() {
         Ok(icon) => settings.window.icon = Some(icon),
         Err(err) => eprintln!("Unable to load the window icon: {err}"),
+    }
+    #[cfg(target_os = "linux")]
+    {
+        settings.window.platform_specific.application_id = APP_ID.into();
     }
     app::App::run(settings)?;
     Ok(())
