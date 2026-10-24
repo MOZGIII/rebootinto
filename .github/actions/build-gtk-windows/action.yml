@@ -21,7 +21,7 @@ runs:
     - name: Install pkgconfig-lite
       shell: pwsh
       run: |
-        Invoke-WebRequest -Uri https://deac-fra.dl.sourceforge.net/project/pkgconfiglite/0.28-1/pkg-config-lite-0.28-1_bin-win32.zip -OutFile /pkg_config_lite.zip -MaximumRetryCount 5
+        curl.exe -fsSL --retry 5 -o /pkg_config_lite.zip https://downloads.sourceforge.net/project/pkgconfiglite/0.28-1/pkg-config-lite-0.28-1_bin-win32.zip
         Expand-Archive /pkg_config_lite.zip -DestinationPath C:\
         ls C:\
         ls C:\pkg-config-lite-0.28-1
