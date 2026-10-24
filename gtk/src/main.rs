@@ -14,6 +14,9 @@ use gtk::{Application, ApplicationWindow};
 /// The Application ID.
 const APP_ID: &str = "mozgiii.Rebootinto";
 
+/// The icon name in the icon theme.
+const ICON_NAME: &str = "rebootinto";
+
 fn main() {
     if let Err(err) = run() {
         match std::env::var("PANIC_ON_ERROR") {
@@ -72,6 +75,7 @@ fn run() -> Result<(), anyhow::Error> {
         let window = ApplicationWindow::builder()
             .application(app)
             .title("Rebootinto")
+            .icon_name(ICON_NAME)
             .default_width(350)
             .default_height(200)
             .child(&scrolled_window)
